@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+#JetBrains IDE files (Rider, IntelliJ
+.idea/
+CMakePresets.json
