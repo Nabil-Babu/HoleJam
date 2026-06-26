@@ -107,8 +107,8 @@ func spawn_box(_global_pos: Vector3):
 		return
 	boxCount += 1
 	var box = box_scene.instantiate()
-	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
 	box.set_multiplayer_authority(1) # set to server id = 1
+	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
 	#boxes_container.add_child(box, true)
 	#box.position = global_pos
 	
