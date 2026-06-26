@@ -21,15 +21,13 @@ func _ready():
 	if is_multiplayer_authority():
 		$Head/Camera3D.current = true; 
 
+
 func _input(event) -> void:
-	
 	if event is InputEventMouseMotion:
-		
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
-		
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
@@ -43,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	print(input_dir)
+	#print(input_dir)
 
 	if direction:
 		velocity.x = direction.x * WALK_SPEED
