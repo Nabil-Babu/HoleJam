@@ -60,6 +60,8 @@ func join_lobby(lobby_id : int, _permissions : int, _locked : bool, _response : 
 	peer.create_client(Steam.getLobbyOwner(lobby_id))
 	peer.connect_to_lobby(lobby_id)
 	multiplayer.multiplayer_peer = peer
+	multiplayer.peer_connected.connect(add_player)
+	multiplayer.peer_disconnected.connect(remove_player)
 	is_joining = false
 
 
