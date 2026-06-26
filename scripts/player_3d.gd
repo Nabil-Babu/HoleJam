@@ -18,7 +18,7 @@ func _enter_tree() -> void:
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if is_multiplayer_authority():
-		camera.current = true; 
+		$Head/Camera3D.current = true; 
 
 func _input(event) -> void:
 	
