@@ -63,6 +63,7 @@ func _lobby_created(result : int, lobby_id : int):
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 		add_player() # adding host as player, default id = 1
+		lobby_ui.hide()
 
 
 func _check_lobby_list(lobbies : Array):
