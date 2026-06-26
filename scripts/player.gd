@@ -19,5 +19,5 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
-	print("Player named " + str(name) + " is at location: " + str(position))
-	print("Player named " + str(name) + " has velocity: " + str(velocity))
+	#print("Player named " + str(name) + " is at location: " + str(position))
+	#print("Player named " + str(name) + " has velocity: " + str(velocity))
