@@ -110,6 +110,8 @@ func build_default_keybinding() -> void:
 	}
 	
 func input_actions_check() -> void:
+	if not is_multiplayer_authority():
+		return
 	#check if the input actions written in the editor are the same as the ones registered in the Input map, and if they are written correctly
 	#if not, add it to runtime Input map with default keybindings
 	if check_on_ready_if_inputs_registered:
@@ -149,6 +151,8 @@ func modify_physics_properties() -> void:
 	was_on_floor = !is_on_floor() #check if play char was on floor every frame
 	
 func gravity_apply(delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
 	# if play char goes up, apply jump gravity
 	#otherwise, apply fall gravity
 	if not is_on_floor(): #no need to push play char if he's already on the floor
