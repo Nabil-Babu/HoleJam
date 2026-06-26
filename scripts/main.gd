@@ -63,7 +63,6 @@ func _lobby_created(result : int, lobby_id : int):
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 		add_player() # adding host as player, default id = 1
-		lobby_ui.hide()
 
 
 func _check_lobby_list(lobbies : Array):
@@ -77,7 +76,10 @@ func _check_lobby_list(lobbies : Array):
 
 
 func add_player(id : int = 1):
-	send_disable_lobby_ui_request(id)
+	if id == 1:
+		lobby_ui.hide()
+	else:
+		send_disable_lobby_ui_request(id)
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
