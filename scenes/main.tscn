@@ -44,7 +44,7 @@ alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
 _spawnable_scenes = PackedStringArray("uid://boa7t0lkhywgp")
-spawn_path = NodePath("../Players")
+spawn_path = NodePath("..")
 
 [node name="Players" type="Node2D" parent="." unique_id=1662162731]
 
