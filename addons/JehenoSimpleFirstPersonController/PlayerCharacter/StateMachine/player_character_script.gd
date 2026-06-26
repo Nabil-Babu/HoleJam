@@ -86,6 +86,9 @@ var default_input_actions : Dictionary
 @onready var ceiling_check: RayCast3D = %CeilingCheck
 @onready var floor_check: RayCast3D = %FloorCheck
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
+
 func _ready() -> void:
 	#set and value references
 	hit_ground_cooldown_ref = hit_ground_cooldown
@@ -137,6 +140,8 @@ func input_actions_check() -> void:
 					InputMap.action_add_event(input_action, input_event_key)
 					
 func _physics_process(_delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
 	modify_physics_properties()
 
 	move_and_slide()

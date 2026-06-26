@@ -7,7 +7,6 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
-@onready var players: Node2D = $Players
 
 var peer : SteamMultiplayerPeer
 var join_code : String
@@ -26,6 +25,10 @@ func _ready() -> void:
 	else:
 		print("Steam did not initialize :(")
 
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
 	if not is_joining:

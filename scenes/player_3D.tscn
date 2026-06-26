@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://wmq8c5cvnn67"]
+
+[ext_resource type="Script" uid="uid://bdnk51dbx3o0t" path="res://scripts/player_3d.gd" id="1_j5bdg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pxusy"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_j5bdg"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="PlayerCharacter" type="CharacterBody3D" unique_id=1395440502]
+script = ExtResource("1_j5bdg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=570694103]
+shape = SubResource("CapsuleShape3D_wmnrm")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=710405786]
+mesh = SubResource("CapsuleMesh_pxusy")
+
+[node name="Head" type="Node3D" parent="." unique_id=638213514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=136830994]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=87279607]
+replication_config = SubResource("SceneReplicationConfig_j5bdg")
