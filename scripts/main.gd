@@ -55,6 +55,9 @@ func _lobby_created(result : int, lobby_id : int):
 		Steam.setLobbyData(lobby_id, "join_code", join_code)
 		
 		# creating host and lobby
+		if multiplayer.multiplayer_peer != null:
+			multiplayer.multiplayer_peer.close()
+			multiplayer.multiplayer_peer = null
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
