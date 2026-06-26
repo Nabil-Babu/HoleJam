@@ -14,6 +14,7 @@ properties/0/replication_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1587924549]
+scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_3v62k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=350525813]
