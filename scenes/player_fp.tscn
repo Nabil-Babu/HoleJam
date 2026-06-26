@@ -31,6 +31,14 @@ albedo_color = Color(0.196078, 0.223529, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p2iaj"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ebv2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=307017552 groups=["PlayerCharacter"]]
 collision_layer = 2
 floor_block_on_wall = false
@@ -419,3 +427,6 @@ theme_override_font_sizes/font_size = 40
 text = "....."
 label_settings = ExtResource("13_bmmpi")
 vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1129793584]
+replication_config = SubResource("SceneReplicationConfig_5ebv2")
