@@ -76,8 +76,7 @@ func _check_lobby_list(lobbies : Array):
 
 
 func add_player(id : int = 1):
-	send_data_to_single_client(id, "am i working?")
-	lobby_ui.hide() # doesnt remove for other player
+	send_disable_lobby_ui_request(id)
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
@@ -111,6 +110,15 @@ func send_data_to_single_client(client_id: int, text_to_send: String):
 
 func send_data_to_all_clients(text_to_send: String):
 	receive_message_from_server.rpc(text_to_send)
+
+
+@rpc("authority", "call_remote", "reliable")
+func receive_disable_lobby_ui_request():
+	lobby_ui.hide()
+
+
+func send_disable_lobby_ui_request(client_id: int):
+	receive_disable_lobby_ui_request.rpc_id(client_id)
 
 ################################################################################
 ######## Singals from Node Children ########
