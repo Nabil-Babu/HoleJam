@@ -29,10 +29,8 @@ func _ready() -> void:
 func add_player(id : int = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
-	# player.position = get_viewport().size / 2.0
 	players.call_deferred("add_child", player)
-	player.call_deferred("set_position", get_viewport().size / 2.0)
-	lobby_ui.hide() # temp... maybe not best to leave this here
+	lobby_ui.hide() # doesnt remove for other player
 	print("Player joined with ID: " + str(id))
 
 
@@ -60,7 +58,7 @@ func join_lobby(lobby_id : int, _permissions : int, _locked : bool, _response : 
 	peer = SteamMultiplayerPeer.new()
 	peer.server_relay = true
 	peer.create_client(Steam.getLobbyOwner(lobby_id))
-	#peer.connect_to_lobby(lobby_id)
+	peer.connect_to_lobby(lobby_id)
 	multiplayer.multiplayer_peer = peer
 	is_joining = false
 
@@ -77,7 +75,7 @@ func lobby_created(result : int, lobby_id : int):
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
-		# peer.connect_to_lobby(lobby_id)
+		peer.connect_to_lobby(lobby_id)
 		
 		# connect this to Godot's internal mp system
 		multiplayer.multiplayer_peer = peer

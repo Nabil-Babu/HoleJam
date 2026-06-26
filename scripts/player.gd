@@ -5,7 +5,7 @@ const SPEED = 300.0
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-
+	position = get_viewport().size / 2.0
 
 func _physics_process(_delta: float) -> void:
 	if not is_multiplayer_authority():
