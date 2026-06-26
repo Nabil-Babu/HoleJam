@@ -46,6 +46,8 @@ alignment = 1
 _spawnable_scenes = PackedStringArray("uid://boa7t0lkhywgp")
 spawn_path = NodePath("..")
 
+[node name="Players" type="Node2D" parent="." unique_id=1662162731]
+
 [connection signal="pressed" from="LobbyUI/Button_Host" to="." method="_on_button_host_pressed"]
 [connection signal="pressed" from="LobbyUI/Button_Join" to="." method="_on_button_join_pressed"]
 [connection signal="text_changed" from="LobbyUI/Lobby_ID_Prompt" to="." method="_on_lobby_id_prompt_text_changed"]
