@@ -103,6 +103,7 @@ func remove_player(id : int):
 
 func spawn_box(_global_pos: Vector3):
 	if not multiplayer.is_server():
+		print("I AM NOT THE SERVER")
 		return
 	boxCount += 1
 	var box = box_scene.instantiate()
