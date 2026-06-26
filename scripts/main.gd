@@ -12,7 +12,7 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 var peer : SteamMultiplayerPeer
 var join_code : String
 var is_joining := false
-var lobby_id : int = 0
+var local_lobby_id : int = 0
 
 
 func _ready() -> void: 
@@ -30,7 +30,7 @@ func _ready() -> void:
 func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
 	if not is_joining:
 		return
-	self.lobby_id = lobby_id
+	local_lobby_id = lobby_id
 	peer = SteamMultiplayerPeer.new()
 	peer.server_relay = true
 	peer.create_client(Steam.getLobbyOwner(lobby_id))
@@ -44,7 +44,7 @@ func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response
 # should only run on the host machine (via host button)
 func _lobby_created(result : int, lobby_id : int):
 	if result == Steam.Result.RESULT_OK:
-		self.lobby_id = lobby_id
+		local_lobby_id = lobby_id
 		print("Steam Lobby created OK")
 		print("Steam lobby id : " + str(lobby_id))
 		join_code = lobby_id_prompt.text
