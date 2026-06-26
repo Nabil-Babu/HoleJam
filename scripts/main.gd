@@ -77,7 +77,7 @@ func lobby_created(result : int, lobby_id : int):
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
-		peer.connect_to_lobby(lobby_id)
+		#peer.connect_to_lobby(lobby_id)
 		
 		# connect this to Godot's internal mp system
 		multiplayer.multiplayer_peer = peer
