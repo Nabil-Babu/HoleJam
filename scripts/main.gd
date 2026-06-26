@@ -3,18 +3,19 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
-@export var box_scene : PackedScene
 @onready var lobby_ui = $LobbyUI
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
 @onready var boxes_container: Node3D = $Boxes
+@onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
 
 var peer : SteamMultiplayerPeer
 var join_code : String
 var is_joining := false
 var local_lobby_id : int = 0
 var boxCount: int = 0
+var box_scene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
@@ -105,8 +106,11 @@ func spawn_box(global_pos: Vector3):
 		return
 	boxCount += 1
 	var box = box_scene.instantiate()
-	box.name = "BOX_" + str(boxCount)
-	#boxes_container.call_deferred("add_child", box, true)
+	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
+	boxes_container.add_child(box, true)
+	box.global_position = global_pos
+	
+	boxes_container.call_deferred("add_child", box, true)
 	# box.set_deferred("global_position", global_pos)
 
 ################################################################################
