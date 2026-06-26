@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b3n0x5bjrvfbp"]
+[gd_scene format=3 uid="uid://bva3a87r130md"]
 
 [ext_resource type="Script" uid="uid://d3s8yxuvpmekm" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/player_character_script.gd" id="1_248n2"]
 [ext_resource type="Script" uid="uid://sca7ypsol83f" path="res://addons/JehenoSimpleFirstPersonController/PlayerCharacter/StateMachine/state_machine_script.gd" id="2_4ps5f"]
@@ -36,7 +36,7 @@ properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="PlayerCharacter" type="CharacterBody3D" unique_id=307017552 groups=["PlayerCharacter"]]
+[node name="PlayerCharacter2" type="CharacterBody3D" unique_id=307017552 groups=["PlayerCharacter"]]
 collision_layer = 2
 floor_block_on_wall = false
 floor_max_angle = 1.13446

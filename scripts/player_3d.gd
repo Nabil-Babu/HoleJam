@@ -1,7 +1,8 @@
 extends CharacterBody3D
 # Movement speeds
-const WALK_SPEED: float = 5.0
-const JUMP_VELOCITY: float = 4.5
+@export var WALK_SPEED: float = 5.0
+@export var JUMP_VELOCITY: float = 4.5
+@export var SPRINT_MULT: float = 1.5
 
 # Look sensitivity
 const MOUSE_SENSITIVITY: float = 0.003
@@ -38,8 +39,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= gravity * delta
 
 	if Input.is_action_just_pressed("play_char_jump_action") and is_on_floor():
-		velocity.y = JUMP_VELOCITY	
-	
+		velocity.y = JUMP_VELOCITY
+		
 	var input_dir: Vector2 = Input.get_vector("play_char_move_left_action", "play_char_move_right_action", "play_char_move_forward_action", "play_char_move_backward_action")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
@@ -49,6 +50,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 		velocity.z = move_toward(velocity.z, 0, WALK_SPEED)
-
+	
+	# Multiply velocity by sprint mult factor when sprinting
+	if Input.is_action_pressed("play_char_run_action"):
+		velocity.x *= SPRINT_MULT
+		velocity.z *= SPRINT_MULT
+		
 	# Execute built-in Godot physics simulation and collision handling
 	move_and_slide()
+	
+	# Grabbing logic
+	if Input.is_action_just_pressed("play_char_grab_action"):
+		print("Im trying grab it")

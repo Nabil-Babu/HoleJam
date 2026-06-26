@@ -19,6 +19,8 @@ properties/2/replication_mode = 1
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1395440502]
 script = ExtResource("1_j5bdg")
+JUMP_VELOCITY = 6.0
+SPRINT_MULT = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=570694103]
 shape = SubResource("CapsuleShape3D_wmnrm")
