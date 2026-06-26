@@ -28,10 +28,9 @@ func _ready() -> void:
 func add_player(id : int = 1):
 	var player = player_scene.instantiate()
 	player.name = str(id)
+	add_child(player)
 	var posX = randf() * 500 + 100
 	var posY = randf() * 300 + 100
-	
-	#call_deferred("add_child", player)
 	player.position = Vector2(posX, posY)
 	lobby_ui.hide() # temp... maybe not best to leave this here
 	print("Player joined with ID: " + str(id))
