@@ -25,6 +25,8 @@ func verifications() -> void:
 	play_char.tween_model_height(play_char.base_model_height)
 	
 func physics_update(delta : float) -> void:
+	if not is_multiplayer_authority():
+		return
 	applies(delta)
 	
 	play_char.gravity_apply(delta)
