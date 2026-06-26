@@ -3,17 +3,18 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
-@export var world_scene : PackedScene
+@export var box_scene : PackedScene
 @onready var lobby_ui = $LobbyUI
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
+@onready var boxes_container: Node3D = $Boxes
 
 var peer : SteamMultiplayerPeer
 var join_code : String
 var is_joining := false
 var local_lobby_id : int = 0
-
+var boxCount: int = 0
 
 func _ready() -> void: 
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
@@ -30,6 +31,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+	if Input.is_action_just_pressed("grab"):
+		spawn_box(Vector3.UP)
 
 func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
 	if not is_joining:
@@ -67,7 +70,6 @@ func _lobby_created(result : int, lobby_id : int):
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 		add_player() # adding host as player, default id = 1
-		
 
 
 func _check_lobby_list(lobbies : Array):
@@ -80,20 +82,11 @@ func _check_lobby_list(lobbies : Array):
 	print("No lobbies found with specified Join Code: " + str(join_code))
 
 
-func spawn_world():
-	# Spawn World scene into the tree
-	var world = world_scene.instantiate()
-	world.name = "World Level"
-	call_deferred("add_child", world)
-	print("World scene created in the lobby")
-
-
 func add_player(id : int = 1):
 	if id == 1:
 		lobby_ui.hide()
 	else:
 		send_disable_lobby_ui_request(id)
-	spawn_world()
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
@@ -106,6 +99,15 @@ func remove_player(id : int):
 	self.get_node(str(id)).queue_free()
 	print("Player left with ID: " + str(id))
 
+
+func spawn_box(global_pos: Vector3):
+	if not multiplayer.is_server():
+		return
+	boxCount += 1
+	var box = box_scene.instantiate()
+	box.name = "BOX_" + str(boxCount)
+	box.global_position = global_pos
+	boxes_container.call_deferred("add_child", box)
 
 ################################################################################
 ######## RPC Functions ########
