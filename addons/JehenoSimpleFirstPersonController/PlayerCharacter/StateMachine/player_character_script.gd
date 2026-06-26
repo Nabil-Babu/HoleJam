@@ -137,6 +137,8 @@ func input_actions_check() -> void:
 					InputMap.action_add_event(input_action, input_event_key)
 					
 func _physics_process(_delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
 	modify_physics_properties()
 
 	move_and_slide()
