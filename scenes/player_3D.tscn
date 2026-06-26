@@ -31,7 +31,6 @@ mesh = SubResource("CapsuleMesh_pxusy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=136830994]
-current = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=87279607]
 replication_config = SubResource("SceneReplicationConfig_j5bdg")
