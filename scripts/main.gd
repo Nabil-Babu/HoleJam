@@ -101,12 +101,13 @@ func remove_player(id : int):
 	print("Player left with ID: " + str(id))
 
 
-func spawn_box(global_pos: Vector3):
+func spawn_box(_global_pos: Vector3):
 	if not multiplayer.is_server():
 		return
 	boxCount += 1
 	var box = box_scene.instantiate()
 	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
+	box.set_multiplayer_authority(1) # set to server id = 1
 	#boxes_container.add_child(box, true)
 	#box.position = global_pos
 	
