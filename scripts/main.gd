@@ -63,6 +63,7 @@ func _lobby_created(result : int, lobby_id : int):
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 		add_player() # adding host as player, default id = 1
+		lobby_ui.hide()
 
 
 func _check_lobby_list(lobbies : Array):
@@ -76,7 +77,7 @@ func _check_lobby_list(lobbies : Array):
 
 
 func add_player(id : int = 1):
-	lobby_ui.hide() # doesnt remove for other player
+	send_disable_lobby_ui_request(id)
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
@@ -91,9 +92,38 @@ func remove_player(id : int):
 
 
 ################################################################################
-######## Singals from Node Children ########
+######## RPC Functions ########
 ################################################################################
 
+# "authority" means only the server/master can call this on peers.
+# "reliable" ensures the message packet is guaranteed to arrive.
+@rpc("authority", "call_remote", "reliable")
+func receive_message_from_server(message: String):
+	# This code executes on the client machine
+	print("Received from server: ", message)
+
+
+func send_data_to_single_client(client_id: int, text_to_send: String):
+	# The first argument is the destination peer ID.
+	# Any subsequent arguments are passed into the target function.
+	receive_message_from_server.rpc_id(client_id, text_to_send)
+
+
+func send_data_to_all_clients(text_to_send: String):
+	receive_message_from_server.rpc(text_to_send)
+
+
+@rpc("authority", "call_remote", "reliable")
+func receive_disable_lobby_ui_request():
+	lobby_ui.hide()
+
+
+func send_disable_lobby_ui_request(client_id: int):
+	receive_disable_lobby_ui_request.rpc_id(client_id)
+
+################################################################################
+######## Singals from Node Children ########
+################################################################################
 
 func _on_button_host_pressed() -> void:
 	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, 8) # define max players
