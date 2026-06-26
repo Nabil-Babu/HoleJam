@@ -106,7 +106,7 @@ func spawn_box(global_pos: Vector3):
 	boxCount += 1
 	var box = box_scene.instantiate()
 	box.name = "BOX_" + str(boxCount)
-	boxes_container.call_deferred("add_child", box)
+	boxes_container.call_deferred("add_child", box, true)
 	box.set_deferred("global_position", global_pos)
 
 ################################################################################

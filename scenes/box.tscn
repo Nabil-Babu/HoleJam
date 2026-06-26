@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bopx36w8d04au"]
 
+[ext_resource type="Script" uid="uid://b63j8xw5gst28" path="res://scripts/box.gd" id="1_3inec"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_32jr6"]
 friction = 0.6
 bounce = 0.25
@@ -17,6 +19,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="Box" type="Node3D" unique_id=531475655]
+script = ExtResource("1_3inec")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1611447296]
 collision_layer = 2
