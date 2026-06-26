@@ -55,12 +55,6 @@ func _lobby_created(result : int, lobby_id : int):
 		#join_code = str(randi() % 100000).pad_zeros(5)
 		Steam.setLobbyData(lobby_id, "join_code", join_code)
 		
-		# Spawn World scene into the tree
-		var world = world_scene.instantiate()
-		world.name = "World Level"
-		call_deferred("add_child", world)
-		print("World scene created in the lobby")
-		
 		# creating host and lobby
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
@@ -86,11 +80,20 @@ func _check_lobby_list(lobbies : Array):
 	print("No lobbies found with specified Join Code: " + str(join_code))
 
 
+func spawn_world():
+	# Spawn World scene into the tree
+	var world = world_scene.instantiate()
+	world.name = "World Level"
+	call_deferred("add_child", world)
+	print("World scene created in the lobby")
+
+
 func add_player(id : int = 1):
 	if id == 1:
 		lobby_ui.hide()
 	else:
 		send_disable_lobby_ui_request(id)
+	spawn_world()
 	var player = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
