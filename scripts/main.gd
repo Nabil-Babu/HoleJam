@@ -34,6 +34,7 @@ func add_player(id : int = 1):
 	call_deferred("add_child", player)
 	lobby_ui.hide() # temp... maybe not best to leave this here
 	print("Player joined with ID: " + str(id))
+	print("Player spawned at location: X=" + posX + ", Y=" + posY)
 
 
 func remove_player(id : int):
