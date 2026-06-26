@@ -42,6 +42,10 @@ layout_mode = 2
 placeholder_text = "Lobby ID"
 alignment = 1
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
+_spawnable_scenes = PackedStringArray("uid://boa7t0lkhywgp")
+spawn_path = NodePath("..")
+
 [connection signal="pressed" from="LobbyUI/Button_Host" to="." method="_on_button_host_pressed"]
 [connection signal="pressed" from="LobbyUI/Button_Join" to="." method="_on_button_join_pressed"]
 [connection signal="text_changed" from="LobbyUI/Lobby_ID_Prompt" to="." method="_on_lobby_id_prompt_text_changed"]
