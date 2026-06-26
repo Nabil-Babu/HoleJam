@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bibc05t77kxfx"]
 
 [ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/floor_struture_material.tres" id="2_8qy4v"]
+[ext_resource type="PackedScene" uid="uid://cokl7ees7crp5" path="res://scenes/button.tscn" id="3_32jr6"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/not_floor_structure_material.tres" id="3_y83ox"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
@@ -165,3 +166,6 @@ radius = 4.4
 radial_segments = 32
 rings = 12
 material = ExtResource("3_y83ox")
+
+[node name="Button" parent="." unique_id=1044116725 instance=ExtResource("3_32jr6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -9.000383)

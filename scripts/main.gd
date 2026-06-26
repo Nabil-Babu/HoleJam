@@ -32,8 +32,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-	if Input.is_action_just_pressed("grab"):
-		spawn_box(Vector3(0.0, 2.0, -10.0))
+	#if Input.is_action_just_pressed("grab"):
+		#spawn_box(Vector3(0.0, 2.0, -10.0))
 
 func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
 	if not is_joining:
@@ -101,7 +101,7 @@ func remove_player(id : int):
 	print("Player left with ID: " + str(id))
 
 
-func spawn_box(_global_pos: Vector3):
+func spawn_box():
 	if not multiplayer.is_server():
 		print("I AM NOT THE SERVER")
 		return
