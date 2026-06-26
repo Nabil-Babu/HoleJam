@@ -79,7 +79,7 @@ func add_player(id : int = 1):
 	lobby_ui.hide() # doesnt remove for other player
 	var player = player_scene.instantiate()
 	player.name = str(id)
-	players.call_deferred("add_child", player)
+	call_deferred("add_child", player)
 	print("Player joined with ID: " + str(id))
 
 
