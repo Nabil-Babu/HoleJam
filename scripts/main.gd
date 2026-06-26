@@ -30,8 +30,9 @@ func add_player(id : int = 1):
 	player.name = str(id)
 	var posX = randf() * 500 + 100
 	var posY = randf() * 300 + 100
+	
+	#call_deferred("add_child", player)
 	player.position = Vector2(posX, posY)
-	call_deferred("add_child", player)
 	lobby_ui.hide() # temp... maybe not best to leave this here
 	print("Player joined with ID: " + str(id))
 	print("Player spawned at location: X=" + str(posX) + ", Y=" + str(posY))
