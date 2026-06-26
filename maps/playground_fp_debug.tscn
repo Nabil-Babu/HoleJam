@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bibc05t77kxfx"]
 
-[ext_resource type="PackedScene" uid="uid://b3n0x5bjrvfbp" path="res://scenes/player_fp.tscn" id="1_32jr6"]
 [ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/floor_struture_material.tres" id="2_8qy4v"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/not_floor_structure_material.tres" id="3_y83ox"]
 
@@ -27,11 +26,6 @@ environment = SubResource("Environment_pyxgo")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=642336567]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, -22, 101, 4)
 shadow_enabled = true
-
-[node name="PlayerCharacter" type="Node3D" parent="." unique_id=1805820334]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7646, 1.50542, -19.959)
-
-[node name="PlayerCharacter" parent="PlayerCharacter" unique_id=307017552 instance=ExtResource("1_32jr6")]
 
 [node name="Map" type="Node3D" parent="." unique_id=1522615066]
 

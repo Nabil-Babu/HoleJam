@@ -27,6 +27,10 @@ func _ready() -> void:
 		print("Steam did not initialize :(")
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+
 func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
 	if not is_joining:
 		return
