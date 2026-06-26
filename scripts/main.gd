@@ -31,9 +31,6 @@ func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response
 	if not is_joining:
 		return
 	local_lobby_id = lobby_id
-	if multiplayer.multiplayer_peer != null:
-		multiplayer.multiplayer_peer.close()
-		multiplayer.multiplayer_peer = null
 	peer = SteamMultiplayerPeer.new()
 	peer.server_relay = true
 	peer.create_client(Steam.getLobbyOwner(lobby_id))
@@ -55,9 +52,6 @@ func _lobby_created(result : int, lobby_id : int):
 		Steam.setLobbyData(lobby_id, "join_code", join_code)
 		
 		# creating host and lobby
-		if multiplayer.multiplayer_peer != null:
-			multiplayer.multiplayer_peer.close()
-			multiplayer.multiplayer_peer = null
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
