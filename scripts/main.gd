@@ -3,6 +3,7 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
+@export var world_scene : PackedScene
 @onready var lobby_ui = $LobbyUI
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
@@ -54,6 +55,12 @@ func _lobby_created(result : int, lobby_id : int):
 		#join_code = str(randi() % 100000).pad_zeros(5)
 		Steam.setLobbyData(lobby_id, "join_code", join_code)
 		
+		# Spawn World scene into the tree
+		var world = world_scene.instantiate()
+		world.name = "World Level"
+		call_deferred("add_child", world)
+		print("World scene created in the lobby")
+		
 		# creating host and lobby
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
@@ -66,6 +73,7 @@ func _lobby_created(result : int, lobby_id : int):
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 		add_player() # adding host as player, default id = 1
+		
 
 
 func _check_lobby_list(lobbies : Array):
