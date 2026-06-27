@@ -34,7 +34,7 @@ func _input(event) -> void:
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event.is_action_pressed("grab") and is_multiplayer_authority():
-		print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
+		#print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
 		if held_object:
 			held_object.request_throw(-camera.global_transform.basis.z * THROW_SPEED)
 			held_object = null
