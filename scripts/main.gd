@@ -8,7 +8,7 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
 @onready var boxes_container: Node3D = $Boxes
-@onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
+@onready var mp_box_spawner: MultiplayerSpawner = $Boxes/MP_BoxSpawner
 
 var peer : SteamMultiplayerPeer
 var join_code : String
@@ -100,7 +100,6 @@ func remove_player(id : int) -> void:
 
 func spawn_box() -> void:
 	if not multiplayer.is_server():
-		print("I AM NOT THE SERVER")
 		return
 	boxCount += 1
 	var box: Node = box_scene.instantiate()
