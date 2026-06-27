@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var attract_speed: float = 20.0
+@export var lowest_point: float = -10.0
 @export var held_by_peer_id: int = 0
 
 
@@ -11,6 +12,11 @@ func _ready() -> void:
 	if not multiplayer.is_server():
 		# Freeze the rigidbody on clients so local physics don't fight the server updates
 		freeze = true 
+
+
+func _process(_delta: float) -> void:
+	if global_position.y < lowest_point:
+		despawn.rpc()
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -42,3 +48,8 @@ func pickup(path: NodePath):
 func throw(direction: Vector3):
 	linear_velocity += direction
 	target_transform = null
+
+@rpc("any_peer", "call_local", "reliable")
+func despawn():
+	print("Despawn me Satan!")
+	queue_free()
