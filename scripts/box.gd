@@ -25,15 +25,14 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 
 func request_pickup(target: Marker3D):
-	if multiplayer.is_server():
-		pickup.rpc(target.get_path())
+	pickup.rpc(target.get_path())
 
 
 func request_throw(direction: Vector3):
-	if multiplayer.is_server():
-		target_transform = null
-		throw_dir = direction
-		rpc_id(1, "throw")
+	target_transform = null
+	throw_dir = direction
+	rpc_id(1, "throw")
+
 
 ######## RPC Functions ########
 @rpc("any_peer", "call_local", "reliable")
