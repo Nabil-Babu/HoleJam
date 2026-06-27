@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://de7qhlmw8kp2s"]
+
+[ext_resource type="Script" uid="uid://c81efh2bv8xpy" path="res://scripts/robot.gd" id="1_br0rw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2y7mq"]
+size = Vector3(1, 1.4951172, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xgfh"]
+size = Vector3(1.1985779, 0.50042725, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3v62k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gl0xr"]
+albedo_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3v62k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5usaj"]
+albedo_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_j5bdg"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Robot" type="CharacterBody3D" unique_id=1395440502]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_br0rw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=570694103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0024414, 0)
+shape = SubResource("BoxShape3D_2y7mq")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=728689673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0.25021362, 0)
+shape = SubResource("BoxShape3D_6xgfh")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="RobotMesh" type="Node3D" parent="." unique_id=1766638063]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RobotMesh" unique_id=445949538]
+transform = Transform3D(1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_3v62k")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="RobotMesh" unique_id=1813452327]
+transform = Transform3D(0.5, 0, 0, 0, 0.75, 0, 0, 0, 0.5, 0, 0.9693066, -0.37703812)
+mesh = SubResource("BoxMesh_3v62k")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl0xr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RobotMesh" unique_id=293396236]
+transform = Transform3D(-2.1855694e-08, -0.6, 0, 0.5, -2.6226834e-08, 0, 0, 0, 0.5, 0, 0.25, 0.25)
+mesh = SubResource("CylinderMesh_3v62k")
+surface_material_override/0 = SubResource("StandardMaterial3D_5usaj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="RobotMesh" unique_id=1076489102]
+transform = Transform3D(-2.1855694e-08, -0.55, 0, 0.5, -2.4041263e-08, 0, 0, 0, 0.5, 0, 0.25, -0.25)
+mesh = SubResource("CylinderMesh_3v62k")
+surface_material_override/0 = SubResource("StandardMaterial3D_5usaj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RobotMesh" unique_id=755207903]
+transform = Transform3D(0.2, 0, 0, 0, -8.742278e-09, -0.2, 0, 0.2, -8.742278e-09, 0, 1.3530725, 0.4621657)
+mesh = SubResource("CylinderMesh_3v62k")
+surface_material_override/0 = SubResource("StandardMaterial3D_5usaj")
+
+[node name="Head" type="Node3D" parent="." unique_id=638213514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="GrabAnchor" type="Marker3D" parent="Head" unique_id=1162836147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24725068, -0.24215388, -1.4153041)
+
+[node name="InteractionRaycast" type="RayCast3D" parent="Head" unique_id=1513381122]
+target_position = Vector3(0, 0, -5)
+collision_mask = 3
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=87279607]
+replication_config = SubResource("SceneReplicationConfig_j5bdg")
