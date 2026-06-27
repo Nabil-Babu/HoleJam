@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdnk51dbx3o0t" path="res://scripts/player_3d.gd" id="1_j5bdg"]
 [ext_resource type="PackedScene" uid="uid://bywhsvr1b0hpi" path="res://models/PlayerBlob.fbx" id="2_f32li"]
+[ext_resource type="Texture2D" uid="uid://blbc2pkm282ug" path="res://icon.svg" id="3_ljh36"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
 
@@ -101,3 +102,32 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j5bdg")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=87279607]
 replication_config = SubResource("SceneReplicationConfig_j5bdg")
+
+[node name="Control" type="Control" parent="." unique_id=1103180400]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=75488710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ljh36")
