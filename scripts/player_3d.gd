@@ -14,6 +14,7 @@ var held_object = null
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var player_mesh: Node3D = $PlayerMesh
 @onready var grab_anchor: Node3D = $Head/GrabAnchor
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
 
@@ -23,7 +24,8 @@ func _enter_tree() -> void:
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if is_multiplayer_authority():
-		$Head/Camera3D.current = true; 
+		camera.current = true; 
+		player_mesh.visible = false
 
 
 func _input(event) -> void:

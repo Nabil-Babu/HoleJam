@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wmq8c5cvnn67"]
 
 [ext_resource type="Script" uid="uid://bdnk51dbx3o0t" path="res://scripts/player_3d.gd" id="1_j5bdg"]
+[ext_resource type="PackedScene" uid="uid://bywhsvr1b0hpi" path="res://models/PlayerBlob.fbx" id="2_f32li"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
 
@@ -28,10 +29,17 @@ JUMP_VELOCITY = 6.0
 SPRINT_MULT = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=570694103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_wmnrm")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
+[node name="PlayerMesh" type="Node3D" parent="." unique_id=1766638063]
+
+[node name="PlayerBlob" parent="PlayerMesh" unique_id=125532092 instance=ExtResource("2_f32li")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=710405786]
+visible = false
 mesh = SubResource("CapsuleMesh_pxusy")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1922672494]
