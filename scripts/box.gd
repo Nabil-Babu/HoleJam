@@ -5,7 +5,6 @@ extends RigidBody3D
 
 
 var target_transform: Marker3D = null
-var throw_dir: Vector3
 var is_following_target := false
 
 func _ready() -> void:
@@ -15,7 +14,7 @@ func _ready() -> void:
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	if not target_transform and not is_following_target:
+	if not target_transform:
 		return
 	# Target position and orientation
 	var target_pos: Vector3 = target_transform.global_position
@@ -25,25 +24,21 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 
 func request_pickup(target: Marker3D):
-	if multiplayer.is_server():
-		target_transform = target
-		rpc_id(1, "pickup")
+	pickup.rpc(target.get_path())
 
 
 func request_throw(direction: Vector3):
-	if multiplayer.is_server():
-		target_transform = null
-		throw_dir = direction
-		rpc_id(1, "throw")
+	throw.rpc(direction)
+
 
 ######## RPC Functions ########
 @rpc("any_peer", "call_local", "reliable")
-func pickup():
-	is_following_target = true
+func pickup(path: NodePath):
+	target_transform = get_node(path) as Marker3D
 	apply_force(Vector3.UP) # need to call apply_force otherwise _integrate_forces doesnt get called
 
 
 @rpc("any_peer", "call_local", "reliable")
-func throw():
-	is_following_target = false
-	linear_velocity += throw_dir
+func throw(direction: Vector3):
+	linear_velocity += direction
+	target_transform = null

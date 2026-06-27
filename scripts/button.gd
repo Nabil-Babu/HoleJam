@@ -8,10 +8,7 @@ func _ready() -> void:
 
 func interact():
 	rpc("trigger_button_press")
-	#if multiplayer.is_server():
-		#rpc("trigger_button_press")
-	#else:
-		#rpc_id(1, "trigger_button_press")
+
 
 @rpc("any_peer", "call_local", "reliable")
 func trigger_button_press():
