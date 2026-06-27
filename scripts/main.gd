@@ -7,12 +7,15 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
+@onready var boxes_container: Node3D = $Boxes
+@onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
 
 var peer : SteamMultiplayerPeer
 var join_code : String
 var is_joining := false
 var local_lobby_id : int = 0
-
+var boxCount: int = 0
+var box_scene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
@@ -29,6 +32,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+	#if Input.is_action_just_pressed("grab"):
+		#spawn_box(Vector3(0.0, 2.0, -10.0))
 
 func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
 	if not is_joining:
@@ -95,6 +100,20 @@ func remove_player(id : int):
 	self.get_node(str(id)).queue_free()
 	print("Player left with ID: " + str(id))
 
+
+func spawn_box():
+	if not multiplayer.is_server():
+		print("I AM NOT THE SERVER")
+		return
+	boxCount += 1
+	var box = box_scene.instantiate()
+	box.set_multiplayer_authority(1) # set to server id = 1
+	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
+	#boxes_container.add_child(box, true)
+	#box.position = global_pos
+	
+	boxes_container.call_deferred("add_child", box, true)
+	# box.set_deferred("global_position", global_pos)
 
 ################################################################################
 ######## RPC Functions ########

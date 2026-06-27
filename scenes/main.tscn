@@ -43,12 +43,18 @@ layout_mode = 2
 placeholder_text = "Lobby ID"
 alignment = 1
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
+[node name="MP_PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
 _spawnable_scenes = PackedStringArray("uid://wmq8c5cvnn67")
 spawn_path = NodePath("..")
 
+[node name="MP_BoxSpawner" type="MultiplayerSpawner" parent="." unique_id=1120116706]
+_spawnable_scenes = PackedStringArray("uid://bopx36w8d04au")
+spawn_path = NodePath("../Boxes")
+
 [node name="TemplateMap" parent="." unique_id=507080638 instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -2, 3)
+
+[node name="Boxes" type="Node3D" parent="." unique_id=451450987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5838518, 0, -13.742837)
 
 [connection signal="pressed" from="LobbyUI/Button_Host" to="." method="_on_button_host_pressed"]
 [connection signal="pressed" from="LobbyUI/Button_Join" to="." method="_on_button_join_pressed"]

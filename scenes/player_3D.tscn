@@ -21,6 +21,8 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1395440502]
+collision_layer = 3
+collision_mask = 5
 script = ExtResource("1_j5bdg")
 JUMP_VELOCITY = 6.0
 SPRINT_MULT = 2.0
@@ -46,6 +48,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j5bdg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=136830994]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Head" unique_id=387480974]
+spawn_path = NodePath("../GrabAnchor")
+spawn_limit = 1
+
+[node name="GrabAnchor" type="Marker3D" parent="Head" unique_id=1162836147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24725068, -0.24215388, -1.4153041)
+
+[node name="InteractionRaycast" type="RayCast3D" parent="Head" unique_id=1513381122]
+target_position = Vector3(0, 0, -5)
+collision_mask = 3
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=87279607]
 replication_config = SubResource("SceneReplicationConfig_j5bdg")
