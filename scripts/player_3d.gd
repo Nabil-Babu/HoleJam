@@ -31,7 +31,7 @@ func _ready():
 		player_mesh.visible = false
 
 
-func _input(event) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
@@ -44,7 +44,7 @@ func _input(event) -> void:
 		#target_indicator.global_position.y + 2.0
 	else:
 		target_indicator.hide()
-	if event.is_action_pressed("grab") and is_multiplayer_authority():
+	if event.is_action_pressed("grab") || Input.is_action_just_pressed("right_trigger") and is_multiplayer_authority():
 		#print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
 		if held_object:
 			held_object.request_throw(-camera.global_transform.basis.z * THROW_SPEED)
