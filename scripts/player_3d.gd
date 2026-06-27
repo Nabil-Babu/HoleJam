@@ -17,6 +17,7 @@ var held_object = null
 @onready var player_mesh: Node3D = $PlayerMesh
 @onready var grab_anchor: Node3D = $Head/GrabAnchor
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
+@onready var target_indicator: MeshInstance3D = $TargetIndicator
 
 func _enter_tree() -> void: 
 	set_multiplayer_authority(name.to_int())
@@ -33,6 +34,13 @@ func _input(event) -> void:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+		
+	if interaction_raycast.is_colliding() and not held_object:
+		target_indicator.show()
+		target_indicator.global_position = interaction_raycast.get_collision_point() 
+		#target_indicator.global_position.y + 2.0
+	else:
+		target_indicator.hide()
 	if event.is_action_pressed("grab") and is_multiplayer_authority():
 		#print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
 		if held_object:
