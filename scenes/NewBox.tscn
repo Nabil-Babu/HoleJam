@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://wtavdu7b32oj"]
+
+[ext_resource type="PackedScene" uid="uid://di0imiiuaw6ko" path="res://models/Box.fbx" id="1_10362"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_emxdc"]
+
+[node name="Box" unique_id=297273385 instance=ExtResource("1_10362")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Box" parent="." index="0" unique_id=2107773160]
+transform = Transform3D(10.617359, 0, 0, 0, 10.617359, 0, 0, 0, 10.617359, 0, 0, 0)
+material_override = ExtResource("2_emxdc")
