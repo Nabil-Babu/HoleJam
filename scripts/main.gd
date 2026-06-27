@@ -18,6 +18,7 @@ var boxCount: int = 0
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
+	check_lobby_prompt()
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
 	if steam_init:
 		print("Steam Initialization OK")
@@ -111,6 +112,12 @@ func spawn_box() -> void:
 	
 	boxes_container.call_deferred("add_child", box, true)
 	# box.set_deferred("global_position", global_pos)
+
+
+func check_lobby_prompt():
+	button_join.disabled = (lobby_id_prompt.text.length() == 0)
+	button_host.disabled = (lobby_id_prompt.text.length() == 0)
+	join_code = lobby_id_prompt.text
 
 ################################################################################
 ######## RPC Functions ########
