@@ -7,8 +7,8 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
-@onready var boxes_container: Node3D = $Boxes
-@onready var mp_box_spawner: MultiplayerSpawner = $Boxes/MP_BoxSpawner
+@onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
+@onready var box_container: Node3D = $MP_BoxSpawner/BoxContainer
 
 var peer : SteamMultiplayerPeer
 var join_code : String
@@ -102,15 +102,20 @@ func remove_player(id : int) -> void:
 func spawn_box() -> void:
 	if not multiplayer.is_server():
 		return
+	if boxCount >= mp_box_spawner.spawn_limit:
+		#print("Already too many boxes in the FACTORY")
+		return
 	boxCount += 1
 	var box: Node = box_scene.instantiate()
 	box.set_multiplayer_authority(1) # set to server id = 1
+	box.box_despawn.connect(box_despawned)
 	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
-	#boxes_container.add_child(box, true)
-	#box.position = global_pos
-	
-	boxes_container.call_deferred("add_child", box, true)
-	# box.set_deferred("global_position", global_pos)
+	box_container.call_deferred("add_child", box, true)
+
+
+func box_despawned():
+	#print("Satan will despawn you little box <3")
+	boxCount -= 1
 
 
 func check_lobby_prompt():
