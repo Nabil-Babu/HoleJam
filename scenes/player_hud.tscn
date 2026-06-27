@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://5gmr4kpjs52h"]
 
+[ext_resource type="Script" uid="uid://dyk0h4iirw5pd" path="res://scripts/player_hud.gd" id="1_iraov"]
 [ext_resource type="Texture2D" uid="uid://t162v80diqv7" path="res://textures/TEX_Reticle.png" id="1_mlvnn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iraov"]
@@ -117,7 +118,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_ke71k")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"reticle_grab",
 "speed": 20.0
 }]
@@ -131,10 +132,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_iraov")
 
 [node name="Reticle" type="AnimatedSprite2D" parent="." unique_id=404298422]
-scale = Vector2(0.1, 0.1)
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.075, 0.075)
 sprite_frames = SubResource("SpriteFrames_3v62k")
 animation = &"reticle_grab"
-frame_progress = 0.6232753
 speed_scale = 2.0

@@ -13,13 +13,14 @@ const JOYPAD_SENSITIVITY: float = 1.000
 # Get the gravity from the project settings to be sync'd with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var held_object = null
+var is_reticle_active: bool = false
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var player_mesh: Node3D = $PlayerMesh
 @onready var grab_anchor: Node3D = $Head/GrabAnchor
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
-@onready var target_indicator: MeshInstance3D = $TargetIndicator
+@onready var player_hud: Control = $PlayerHUD
 
 func _enter_tree() -> void: 
 	set_multiplayer_authority(name.to_int())
@@ -39,11 +40,13 @@ func _input(event: InputEvent) -> void:
 			
 		
 	if interaction_raycast.is_colliding() and not held_object:
-		target_indicator.show()
-		target_indicator.global_position = interaction_raycast.get_collision_point() 
-		#target_indicator.global_position.y + 2.0
+		if not is_reticle_active:
+			is_reticle_active = true
+			player_hud.reticle_to_grab()
 	else:
-		target_indicator.hide()
+		if is_reticle_active:
+			is_reticle_active = false
+			player_hud.reticle_to_idle()
 	if event.is_action_pressed("grab") || Input.is_action_just_pressed("right_trigger") and is_multiplayer_authority():
 		#print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
 		if held_object:
