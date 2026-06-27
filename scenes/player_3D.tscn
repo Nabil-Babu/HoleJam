@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://wmq8c5cvnn67"]
 
 [ext_resource type="Script" uid="uid://bdnk51dbx3o0t" path="res://scripts/player_3d.gd" id="1_j5bdg"]
+[ext_resource type="PackedScene" uid="uid://5gmr4kpjs52h" path="res://scenes/player_hud.tscn" id="2_f32li"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
 
@@ -106,6 +107,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24725068, -0.24215388, -1.4
 [node name="InteractionRaycast" type="RayCast3D" parent="Head" unique_id=1513381122]
 target_position = Vector3(0, 0, -5)
 collision_mask = 3
+
+[node name="PlayerHUD" parent="." unique_id=1235116640 instance=ExtResource("2_f32li")]
 
 [node name="TargetIndicator" type="MeshInstance3D" parent="." unique_id=710405786]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
