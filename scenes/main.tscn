@@ -44,11 +44,13 @@ text = "test"
 placeholder_text = "Lobby ID"
 alignment = 1
 
+[node name="TemplateMap" parent="." unique_id=507080638 instance=ExtResource("3_sugp2")]
+
 [node name="MP_PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
 _spawnable_scenes = PackedStringArray("uid://wmq8c5cvnn67")
-spawn_path = NodePath("..")
+spawn_path = NodePath("PlayerContainer")
 
-[node name="TemplateMap" parent="." unique_id=507080638 instance=ExtResource("3_sugp2")]
+[node name="PlayerContainer" type="Node3D" parent="MP_PlayerSpawner" unique_id=2064306461]
 
 [node name="MP_BoxSpawner" type="MultiplayerSpawner" parent="." unique_id=1120116706]
 _spawnable_scenes = PackedStringArray("uid://bopx36w8d04au")
