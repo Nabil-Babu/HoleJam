@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+signal box_despawn
+
 @export var attract_speed: float = 20.0
 @export var lowest_point: float = -10.0
 @export var held_by_peer_id: int = 0
@@ -51,5 +53,5 @@ func throw(direction: Vector3):
 
 @rpc("any_peer", "call_local", "reliable")
 func despawn():
-	print("Despawn me Satan!")
+	box_despawn.emit()
 	queue_free()

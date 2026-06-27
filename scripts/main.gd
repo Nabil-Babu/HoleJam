@@ -108,8 +108,14 @@ func spawn_box() -> void:
 	boxCount += 1
 	var box: Node = box_scene.instantiate()
 	box.set_multiplayer_authority(1) # set to server id = 1
+	box.box_despawn.connect(box_despawned)
 	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
 	box_container.call_deferred("add_child", box, true)
+
+
+func box_despawned():
+	#print("Satan will despawn you little box <3")
+	boxCount -= 1
 
 
 func check_lobby_prompt():
