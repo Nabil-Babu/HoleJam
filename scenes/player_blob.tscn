@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://c4xkloac0jlxg"]
 
 [ext_resource type="PackedScene" uid="uid://bywhsvr1b0hpi" path="res://models/PlayerBlob.fbx" id="1_h8sfb"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_7st3p"]
 
 [node name="PlayerBlob" unique_id=125532092 instance=ExtResource("1_h8sfb")]
+
+[node name="PlayerBlob" parent="." index="0" unique_id=1476716082]
+material_override = ExtResource("2_7st3p")
