@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://62fpj7lkok5u"]
+
+[ext_resource type="PackedScene" uid="uid://ds2a5ogtnvhi2" path="res://models/iBoxIt.fbx" id="1_j3aaj"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_1bu44"]
+
+[node name="iBoxIt" unique_id=2008717212 instance=ExtResource("1_j3aaj")]
+
+[node name="Iboxit_Tray" parent="." index="0" unique_id=1640097113]
+material_override = ExtResource("2_1bu44")
+
+[node name="iBoxIt" parent="." index="1" unique_id=703943714]
+material_override = ExtResource("2_1bu44")
