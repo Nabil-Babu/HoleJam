@@ -28,7 +28,6 @@ func request_pickup(target: Marker3D):
 
 
 func request_throw(direction: Vector3):
-	target_transform = null
 	throw.rpc(direction)
 
 
@@ -42,3 +41,4 @@ func pickup(path: NodePath):
 @rpc("any_peer", "call_local", "reliable")
 func throw(direction: Vector3):
 	linear_velocity += direction
+	target_transform = null

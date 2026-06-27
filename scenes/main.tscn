@@ -40,6 +40,7 @@ text = "JOIN"
 
 [node name="Lobby_ID_Prompt" type="LineEdit" parent="LobbyUI" unique_id=1105182637]
 layout_mode = 2
+text = "test"
 placeholder_text = "Lobby ID"
 alignment = 1
 
