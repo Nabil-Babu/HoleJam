@@ -9,9 +9,12 @@ const MOUSE_SENSITIVITY: float = 0.003
 
 # Get the gravity from the project settings to be sync'd with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var is_holding := false
+var held_object
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var grab_anchor: Node3D = $Head/GrabAnchor
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
 
 func _enter_tree() -> void: 
@@ -28,14 +31,22 @@ func _input(event) -> void:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	if event.is_action_pressed("grab"): # Map this in Project Settings
+	if event.is_action_pressed("grab"):
+		if is_holding:
+			is_holding = false
+			held_object.throw(-global_transform.basis.z)
+			held_object = null
+			return
 		var collider = interaction_raycast.get_collider()
-		
-		# Check if the object is the 3D button and has our interact function
 		if collider:
 			print("HIT COLLIDER WITH NAME: " + str(collider.name))
 			if collider.has_method("interact"):
 				collider.interact()
+			if collider.has_method("pickup"):
+				if collider.pickup(grab_anchor):
+					held_object = collider
+					is_holding = true
+		
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
