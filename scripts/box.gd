@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	if not target_transform:
+	if not target_transform and not is_following_target:
 		return
 	# Target position and orientation
 	var target_pos: Vector3 = target_transform.global_position
@@ -28,9 +28,16 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func request_pickup(target: Marker3D):
 	if multiplayer.is_server():
 		target_transform = target
-		print("I AM BEING GRABBED and my target state is " + str(target_transform))
+		rpc_id(1, "pickup")
 
 
+func pickup():
+	is_following_target = true
+	print("I AM BEING GRABBED and my target state is " + str(target_transform))
+
+
+@rpc("any_peer", "call_local", "reliable")
 func throw(direction: Vector3):
-	target_transform = null
-	linear_velocity += direction * 10.0
+	if multiplayer.is_server():
+		target_transform = null
+		linear_velocity += direction * 10.0
