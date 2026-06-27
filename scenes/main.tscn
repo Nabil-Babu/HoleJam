@@ -4,6 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://wmq8c5cvnn67" path="res://scenes/player_3D.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bibc05t77kxfx" path="res://maps/playground_fp_debug.tscn" id="3_sugp2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v62k"]
+bg_color = Color(1, 1, 1, 0.24313726)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="Main" type="Control" unique_id=135172665]
 layout_mode = 3
 anchors_preset = 15
@@ -14,41 +21,66 @@ grow_vertical = 2
 script = ExtResource("1_0wfyh")
 player_scene = ExtResource("2_sugp2")
 
-[node name="LobbyUI" type="VBoxContainer" parent="." unique_id=74653903]
+[node name="LobbyUI" type="PanelContainer" parent="." unique_id=2033165288]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -60.0
-offset_right = 125.0
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -175.0
+offset_right = 300.0
+offset_bottom = -50.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3v62k")
 
-[node name="Button_Host" type="Button" parent="LobbyUI" unique_id=196454048]
+[node name="Margins" type="MarginContainer" parent="LobbyUI" unique_id=344717145]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="LobbyUI/Margins" unique_id=363957785]
+layout_mode = 2
+
+[node name="Button_Host" type="Button" parent="LobbyUI/Margins/VBox" unique_id=196454048]
 layout_mode = 2
 disabled = true
 text = "HOST"
 
-[node name="Button_Join" type="Button" parent="LobbyUI" unique_id=1496333820]
+[node name="Button_Join" type="Button" parent="LobbyUI/Margins/VBox" unique_id=1496333820]
 layout_mode = 2
 disabled = true
 text = "JOIN"
 
-[node name="Lobby_ID_Prompt" type="LineEdit" parent="LobbyUI" unique_id=1105182637]
+[node name="HSeparator" type="HSeparator" parent="LobbyUI/Margins/VBox" unique_id=1877118024]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/Margins/VBox" unique_id=1865025346]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LobbyUI/Margins/VBox/HBoxContainer" unique_id=1824958115]
+layout_mode = 2
+text = "Lobby Name:"
+
+[node name="Lobby_ID_Prompt" type="LineEdit" parent="LobbyUI/Margins/VBox/HBoxContainer" unique_id=1105182637]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "test"
 placeholder_text = "Lobby ID"
 alignment = 1
+max_length = 10
+select_all_on_focus = true
+caret_blink = true
+
+[node name="TemplateMap" parent="." unique_id=507080638 instance=ExtResource("3_sugp2")]
 
 [node name="MP_PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
 _spawnable_scenes = PackedStringArray("uid://wmq8c5cvnn67")
-spawn_path = NodePath("..")
+spawn_path = NodePath("PlayerContainer")
 
-[node name="TemplateMap" parent="." unique_id=507080638 instance=ExtResource("3_sugp2")]
+[node name="PlayerContainer" type="Node3D" parent="MP_PlayerSpawner" unique_id=2064306461]
 
 [node name="MP_BoxSpawner" type="MultiplayerSpawner" parent="." unique_id=1120116706]
 _spawnable_scenes = PackedStringArray("uid://bopx36w8d04au")
@@ -56,8 +88,13 @@ spawn_path = NodePath("BoxContainer")
 spawn_limit = 20
 
 [node name="BoxContainer" type="Node3D" parent="MP_BoxSpawner" unique_id=451450987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5838518, 0, -13.742837)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.579755, 0, -17.557991)
 
-[connection signal="pressed" from="LobbyUI/Button_Host" to="." method="_on_button_host_pressed"]
-[connection signal="pressed" from="LobbyUI/Button_Join" to="." method="_on_button_join_pressed"]
-[connection signal="text_changed" from="LobbyUI/Lobby_ID_Prompt" to="." method="_on_lobby_id_prompt_text_changed"]
+[node name="MP_RobotSpawner" type="MultiplayerSpawner" parent="." unique_id=1838101910]
+spawn_path = NodePath("RobotContainer")
+
+[node name="RobotContainer" type="Node3D" parent="MP_RobotSpawner" unique_id=416356879]
+
+[connection signal="pressed" from="LobbyUI/Margins/VBox/Button_Host" to="." method="_on_button_host_pressed"]
+[connection signal="pressed" from="LobbyUI/Margins/VBox/Button_Join" to="." method="_on_button_join_pressed"]
+[connection signal="text_changed" from="LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt" to="." method="_on_lobby_id_prompt_text_changed"]

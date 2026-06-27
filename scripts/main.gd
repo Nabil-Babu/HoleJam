@@ -3,12 +3,16 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
-@onready var lobby_ui: VBoxContainer = $LobbyUI
-@onready var button_host: Button = $LobbyUI/Button_Host
-@onready var button_join: Button = $LobbyUI/Button_Join
-@onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
+@onready var lobby_ui: PanelContainer = $LobbyUI
+@onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
+@onready var button_join: Button = $LobbyUI/Margins/VBox/Button_Join
+@onready var lobby_id_prompt: LineEdit = $LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt
+
+@onready var player_container: Node3D = $MP_PlayerSpawner/PlayerContainer
 @onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
 @onready var box_container: Node3D = $MP_BoxSpawner/BoxContainer
+@onready var mp_robot_spawner: MultiplayerSpawner = $MP_RobotSpawner
+@onready var robot_container: Node3D = $MP_RobotSpawner/RobotContainer
 
 var peer : SteamMultiplayerPeer
 var join_code : String
@@ -88,7 +92,7 @@ func add_player(id : int = 1):
 	send_disable_lobby_ui_request(id)
 	var player: Node = player_scene.instantiate()
 	player.name = str(id)
-	call_deferred("add_child", player)
+	player_container.call_deferred("add_child", player, true)
 	print("Player joined with ID: " + str(id))
 
 
