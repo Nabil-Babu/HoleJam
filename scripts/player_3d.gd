@@ -34,7 +34,7 @@ func _input(event) -> void:
 	if event.is_action_pressed("grab"):
 		if is_holding:
 			is_holding = false
-			held_object.throw(-global_transform.basis.z)
+			held_object.request_throw(-global_transform.basis.z)
 			held_object = null
 			return
 		var collider = interaction_raycast.get_collider()

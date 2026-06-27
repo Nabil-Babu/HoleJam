@@ -5,6 +5,7 @@ extends RigidBody3D
 
 
 var target_transform: Marker3D = null
+var throw_dir: Vector3
 var is_following_target := false
 
 func _ready() -> void:
@@ -20,24 +21,29 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	var target_pos: Vector3 = target_transform.global_position
 	# Calculate physics velocity to move toward target
 	var pos_delta: Vector3 = target_pos - global_position
-	print(pos_delta)
 	state.linear_velocity = pos_delta * attract_speed
 
 
-@rpc("any_peer", "call_local", "reliable")
 func request_pickup(target: Marker3D):
 	if multiplayer.is_server():
 		target_transform = target
 		rpc_id(1, "pickup")
 
 
+@rpc("any_peer", "call_local", "reliable")
 func pickup():
 	is_following_target = true
 	print("I AM BEING GRABBED and my target state is " + str(target_transform))
 
 
-@rpc("any_peer", "call_local", "reliable")
-func throw(direction: Vector3):
+func request_throw(direction: Vector3):
 	if multiplayer.is_server():
 		target_transform = null
-		linear_velocity += direction * 10.0
+		throw_dir = direction
+		rpc_id(1, "throw")
+
+
+@rpc("any_peer", "call_local", "reliable")
+func throw():
+	is_following_target = false
+	linear_velocity += throw_dir * 10.0
