@@ -3,7 +3,7 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
-@onready var lobby_ui = $LobbyUI
+@onready var lobby_ui: VBoxContainer = $LobbyUI
 @onready var button_host: Button = $LobbyUI/Button_Host
 @onready var button_join: Button = $LobbyUI/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Lobby_ID_Prompt
@@ -15,7 +15,7 @@ var join_code : String
 var is_joining := false
 var local_lobby_id : int = 0
 var boxCount: int = 0
-var box_scene = preload("res://scenes/box.tscn")
+var box_scene: PackedScene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
@@ -32,10 +32,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-	#if Input.is_action_just_pressed("grab"):
-		#spawn_box(Vector3(0.0, 2.0, -10.0))
 
-func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int):
+
+func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response : int) -> void:
 	if not is_joining:
 		return
 	local_lobby_id = lobby_id
@@ -44,8 +43,6 @@ func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response
 	peer.create_client(Steam.getLobbyOwner(lobby_id))
 	peer.connect_to_lobby(lobby_id)
 	multiplayer.multiplayer_peer = peer
-	#multiplayer.peer_connected.connect(add_player)
-	#multiplayer.peer_disconnected.connect(remove_player)
 	is_joining = false
 
 
@@ -63,7 +60,6 @@ func _lobby_created(result : int, lobby_id : int):
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
-		peer.connect_to_lobby(lobby_id)
 		print("Lobby created with code: " + str(join_code))
 		
 		# bind this to Godot's internal mp system
@@ -73,7 +69,7 @@ func _lobby_created(result : int, lobby_id : int):
 		add_player() # adding host as player, default id = 1
 
 
-func _check_lobby_list(lobbies : Array):
+func _check_lobby_list(lobbies : Array) -> void:
 	for lobby in lobbies:
 		var code = Steam.getLobbyData(lobby, "join_code")
 		if code == join_code:
@@ -84,29 +80,30 @@ func _check_lobby_list(lobbies : Array):
 
 
 func add_player(id : int = 1):
-	if id == 1:
-		lobby_ui.hide()
-	else:
-		send_disable_lobby_ui_request(id)
-	var player = player_scene.instantiate()
+#	if id == 1:
+#		lobby_ui.hide()
+#	else:
+#		send_disable_lobby_ui_request(id)
+	send_disable_lobby_ui_request(id)
+	var player: Node = player_scene.instantiate()
 	player.name = str(id)
 	call_deferred("add_child", player)
 	print("Player joined with ID: " + str(id))
 
 
-func remove_player(id : int):
+func remove_player(id : int) -> void:
 	if not self.has_node(str(id)):
 		return
 	self.get_node(str(id)).queue_free()
 	print("Player left with ID: " + str(id))
 
 
-func spawn_box():
+func spawn_box() -> void:
 	if not multiplayer.is_server():
 		print("I AM NOT THE SERVER")
 		return
 	boxCount += 1
-	var box = box_scene.instantiate()
+	var box: Node = box_scene.instantiate()
 	box.set_multiplayer_authority(1) # set to server id = 1
 	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
 	#boxes_container.add_child(box, true)
@@ -137,7 +134,7 @@ func send_data_to_all_clients(text_to_send: String):
 	receive_message_from_server.rpc(text_to_send)
 
 
-@rpc("authority", "call_remote", "reliable")
+@rpc("authority", "call_local", "reliable")
 func receive_disable_lobby_ui_request():
 	lobby_ui.hide()
 

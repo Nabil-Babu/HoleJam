@@ -48,8 +48,7 @@ _data = {
 &"press_button": SubResource("Animation_rhj8v")
 }
 
-[node name="Button" type="RigidBody3D" unique_id=1962310464]
-gravity_scale = 0.0
+[node name="Button" type="StaticBody3D" unique_id=943290839]
 script = ExtResource("1_mi6dp")
 
 [node name="Pedastal_Col" type="CollisionShape3D" parent="." unique_id=856630185]

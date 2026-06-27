@@ -30,20 +30,20 @@ func request_pickup(target: Marker3D):
 		rpc_id(1, "pickup")
 
 
-@rpc("any_peer", "call_local", "reliable")
-func pickup():
-	is_following_target = true
-	print("I AM BEING GRABBED and my target state is " + str(target_transform))
-
-
 func request_throw(direction: Vector3):
 	if multiplayer.is_server():
 		target_transform = null
 		throw_dir = direction
 		rpc_id(1, "throw")
 
+######## RPC Functions ########
+@rpc("any_peer", "call_local", "reliable")
+func pickup():
+	is_following_target = true
+	apply_force(Vector3.UP) # need to call apply_force otherwise _integrate_forces doesnt get called
+
 
 @rpc("any_peer", "call_local", "reliable")
 func throw():
 	is_following_target = false
-	linear_velocity += throw_dir * 10.0
+	linear_velocity += throw_dir

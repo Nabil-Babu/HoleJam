@@ -3,14 +3,14 @@ extends CharacterBody3D
 @export var WALK_SPEED: float = 5.0
 @export var JUMP_VELOCITY: float = 4.5
 @export var SPRINT_MULT: float = 1.5
+@export var THROW_SPEED: float = 10.0
 
 # Look sensitivity
 const MOUSE_SENSITIVITY: float = 0.003
 
 # Get the gravity from the project settings to be sync'd with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var is_holding := false
-var held_object
+var held_object = null
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -32,20 +32,17 @@ func _input(event) -> void:
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	if event.is_action_pressed("grab"):
-		if is_holding:
-			is_holding = false
-			held_object.request_throw(-global_transform.basis.z)
+		if held_object:
+			held_object.request_throw(-camera.global_transform.basis.z * THROW_SPEED)
 			held_object = null
 			return
-		var collider = interaction_raycast.get_collider()
+		var collider: Object = interaction_raycast.get_collider()
 		if collider:
-			print("HIT COLLIDER WITH NAME: " + str(collider.name))
 			if collider.has_method("interact"):
 				collider.interact()
 			if collider.has_method("request_pickup"):
 				collider.request_pickup(grab_anchor)
 				held_object = collider
-				is_holding = true
 		
 
 func _physics_process(delta: float) -> void:
