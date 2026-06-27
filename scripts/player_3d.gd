@@ -1,12 +1,14 @@
 extends CharacterBody3D
 # Movement speeds
 @export var WALK_SPEED: float = 5.0
+@export var TURN_SPEED: float = 5.0
 @export var JUMP_VELOCITY: float = 4.5
 @export var SPRINT_MULT: float = 1.5
 @export var THROW_SPEED: float = 10.0
 
 # Look sensitivity
 const MOUSE_SENSITIVITY: float = 0.003
+const JOYPAD_SENSITIVITY: float = 1.000
 
 # Get the gravity from the project settings to be sync'd with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -34,6 +36,7 @@ func _input(event) -> void:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+			
 		
 	if interaction_raycast.is_colliding() and not held_object:
 		target_indicator.show()
@@ -68,8 +71,14 @@ func _physics_process(delta: float) -> void:
 		
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	#print(input_dir)
-
+	
+	var aim_dir: Vector2 = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	
+	if aim_dir.length_squared() > 0:
+		rotate_y(-aim_dir.x * TURN_SPEED * delta)
+		head.rotate_x(-aim_dir.y * TURN_SPEED * delta)
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+	
 	if direction:
 		velocity.x = direction.x * WALK_SPEED
 		velocity.z = direction.z * WALK_SPEED
