@@ -3,10 +3,11 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
-@onready var lobby_ui: VBoxContainer = $LobbyUI
-@onready var button_host: Button = $LobbyUI/Button_Host
-@onready var button_join: Button = $LobbyUI/Button_Join
-@onready var lobby_id_prompt: LineEdit = $LobbyUI/HBoxContainer/Lobby_ID_Prompt
+@onready var lobby_ui: PanelContainer = $LobbyUI
+@onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
+@onready var button_join: Button = $LobbyUI/Margins/VBox/Button_Join
+@onready var lobby_id_prompt: LineEdit = $LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt
+
 @onready var player_container: Node3D = $MP_PlayerSpawner/PlayerContainer
 @onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
 @onready var box_container: Node3D = $MP_BoxSpawner/BoxContainer
