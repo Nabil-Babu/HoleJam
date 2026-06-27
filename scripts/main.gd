@@ -103,7 +103,7 @@ func spawn_box() -> void:
 	if not multiplayer.is_server():
 		return
 	if boxCount >= mp_box_spawner.spawn_limit:
-		print("Already too many boxes in the FACTORY")
+		#print("Already too many boxes in the FACTORY")
 		return
 	boxCount += 1
 	var box: Node = box_scene.instantiate()
