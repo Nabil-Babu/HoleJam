@@ -120,7 +120,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"reticle_grab",
-"speed": 20.0
+"speed": 40.0
 }]
 
 [node name="PlayerHUD" type="Control" unique_id=1235116640]
