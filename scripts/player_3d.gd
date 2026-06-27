@@ -42,10 +42,10 @@ func _input(event) -> void:
 			print("HIT COLLIDER WITH NAME: " + str(collider.name))
 			if collider.has_method("interact"):
 				collider.interact()
-			if collider.has_method("pickup"):
-				if collider.pickup(grab_anchor):
-					held_object = collider
-					is_holding = true
+			if collider.has_method("request_pickup"):
+				collider.request_pickup(grab_anchor)
+				held_object = collider
+				is_holding = true
 		
 
 func _physics_process(delta: float) -> void:

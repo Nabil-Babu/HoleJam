@@ -49,6 +49,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=136830994]
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Head" unique_id=387480974]
+spawn_path = NodePath("../GrabAnchor")
+spawn_limit = 1
+
 [node name="GrabAnchor" type="Marker3D" parent="Head" unique_id=1162836147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24725068, -0.24215388, -1.4153041)
 
