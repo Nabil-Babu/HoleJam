@@ -52,6 +52,7 @@ func _lobby_joined(lobby_id : int, _permissions : int, _locked : bool, _response
 	peer = SteamMultiplayerPeer.new()
 	peer.server_relay = true
 	peer.create_client(Steam.getLobbyOwner(lobby_id))
+	# Ignore the ERROR this creates
 	peer.connect_to_lobby(lobby_id)
 	multiplayer.multiplayer_peer = peer
 	is_joining = false
@@ -71,6 +72,7 @@ func _lobby_created(result : int, lobby_id : int):
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
+		# Ignore the ERROR this creates
 		peer.connect_to_lobby(lobby_id)
 		print("Lobby created with code: " + str(join_code))
 		
