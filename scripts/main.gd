@@ -14,7 +14,6 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 @onready var player_container: Node3D = $MP_PlayerSpawner/PlayerContainer
 @onready var mp_box_spawner: MultiplayerSpawner = $MP_BoxSpawner
 @onready var box_container: Node3D = $MP_BoxSpawner/BoxContainer
-@onready var mp_robot_spawner: MultiplayerSpawner = $MP_RobotSpawner
 @onready var robot_container: Node3D = $MP_RobotSpawner/RobotContainer
 
 var peer : SteamMultiplayerPeer
