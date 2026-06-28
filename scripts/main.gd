@@ -153,6 +153,8 @@ func check_lobby_prompt():
 ################################################################################
 ######## RPC Functions ########
 ################################################################################
+# "authority" means only the server/master can call this on peers.
+# "reliable" ensures the message packet is guaranteed to arrive.
 
 @rpc("any_peer", "call_local", "reliable")
 func set_box_spawn_pos(taret_pos: Vector3, path : NodePath):
@@ -160,16 +162,12 @@ func set_box_spawn_pos(taret_pos: Vector3, path : NodePath):
 	if box:
 		box.global_position = taret_pos
 
-
 @rpc("any_peer", "call_local", "reliable")
 func set_player_spawn_pos(taret_pos: Vector3, path : NodePath):
 	var player: Node = get_node(path)
 	if player:
 		player.global_position = taret_pos
 
-
-# "authority" means only the server/master can call this on peers.
-# "reliable" ensures the message packet is guaranteed to arrive.
 @rpc("authority", "call_remote", "reliable")
 func receive_message_from_server(message: String):
 	# This code executes on the client machine
@@ -184,7 +182,7 @@ func update_game_score(new_score: int):
 		game_score_ui.text = "Score: "+str(game_score)
 		
 @rpc("any_peer", "call_local", "reliable")
-func update_game_score_dict(team: String, new_score: int) -> void:
+func update_team_score(team: String, new_score: int) -> void:
 	if !multiplayer.is_server():
 		return
 	if game_scores.has(team):
@@ -193,15 +191,24 @@ func update_game_score_dict(team: String, new_score: int) -> void:
 			game_scores[team] = 0
 
 @rpc("any_peer", "call_local", "reliable")	
-func get_game_score(team: String) -> void:
-	pass
+func request_team_score(team: String) -> void:
+	if multiplayer.is_server() && game_scores.has(team):
+		var id: int = multiplayer.get_remote_sender_id()
+		receive_team_score.rpc_id(id, team, game_scores[team])
 
+@rpc("authority", "call_remote", "reliable")
+func receive_team_score(team: String, score: int):
+	game_scores[team] = score;
 
 @rpc("authority", "call_remote", "reliable")
 func broadcast_updated_score(score: int):
 	game_score = score
 	print("Broadcasted Score: %d" % game_score)
 	game_score_ui.text = "Score: "+str(game_score)
+	
+@rpc("authority", "call_local", "reliable")
+func receive_disable_lobby_ui_request():
+	lobby_ui.hide()
 
 
 func send_data_to_single_client(client_id: int, text_to_send: String):
@@ -212,11 +219,6 @@ func send_data_to_single_client(client_id: int, text_to_send: String):
 
 func send_data_to_all_clients(text_to_send: String):
 	receive_message_from_server.rpc(text_to_send)
-
-
-@rpc("authority", "call_local", "reliable")
-func receive_disable_lobby_ui_request():
-	lobby_ui.hide()
 
 
 func send_disable_lobby_ui_request(client_id: int):
