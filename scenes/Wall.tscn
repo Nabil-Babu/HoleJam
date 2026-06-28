@@ -3,7 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://cynrvrmb6wfgk" path="res://models/Wall.fbx" id="1_awoh5"]
 [ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_r2q6n"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pxusy"]
+size = Vector3(11.585358, 22.70996, 0.47973633)
+
 [node name="Wall" unique_id=403222939 instance=ExtResource("1_awoh5")]
 
-[node name="Wall" parent="." index="0" unique_id=1961243509]
+[node name="Wall" parent="." index="0" unique_id=1982198534]
 material_override = ExtResource("2_r2q6n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=676238193]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1693469212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7178802, 11.668873, -0.042114258)
+shape = SubResource("BoxShape3D_pxusy")
