@@ -4,6 +4,7 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
 @onready var lobby_ui: PanelContainer = $LobbyUI
+@onready var game_score_ui: Label3D = $GameScoreUI
 @onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
 @onready var button_join: Button = $LobbyUI/Margins/VBox/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt
@@ -19,6 +20,7 @@ var join_code : String
 var is_joining := false
 var local_lobby_id : int = 0
 var boxCount: int = 0
+@export var game_score: int = 0
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
@@ -137,6 +139,21 @@ func check_lobby_prompt():
 func receive_message_from_server(message: String):
 	# This code executes on the client machine
 	print("Received from server: ", message)
+
+@rpc("any_peer", "call_local", "reliable")
+func update_game_score(new_score: int):
+	if multiplayer.is_server():
+		game_score += new_score
+		print("Server Score: %d" % game_score)
+		broadcast_updated_score.rpc(game_score)
+		game_score_ui.text = "Score: "+str(game_score)
+
+
+@rpc("authority", "call_remote", "reliable")
+func broadcast_updated_score(score: int):
+	game_score = score
+	print("Broadcasted Score: %d" % game_score)
+	game_score_ui.text = "Score: "+str(game_score)
 
 
 func send_data_to_single_client(client_id: int, text_to_send: String):
