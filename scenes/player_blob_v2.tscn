@@ -13,17 +13,17 @@ _data = {
 
 [node name="PlayerBlob_V2" unique_id=600462586 instance=ExtResource("1_wpa37")]
 
-[node name="Skeleton3D" parent="." index="0" unique_id=1514266291]
-bones/0/position = Vector3(-0.013375629, 0.6050643, 7.216449e-18)
-bones/7/position = Vector3(0.41233426, 0.0059720743, 0.022561578)
-bones/7/rotation = Quaternion(0.95876276, -0.15877403, 0.23317406, 0.03456522)
-bones/8/position = Vector3(0.21047467, 0, 1.7763568e-17)
-bones/10/position = Vector3(0.42192486, 0.0060000615, -0.022561582)
-bones/10/rotation = Quaternion(-0.04087432, -0.24474001, -0.1421819, 0.95823586)
+[node name="Skeleton3D" parent="." index="0" unique_id=1360574036]
+bones/0/position = Vector3(-0.013375629, 0.60446805, 7.216449e-18)
+bones/7/position = Vector3(0.41176668, 0.0061546955, 0.022561578)
+bones/7/rotation = Quaternion(0.98656356, -0.16337794, -8.864181e-18, 6.72925e-17)
+bones/8/position = Vector3(0.21047467, 0, 2.6645352e-17)
+bones/10/position = Vector3(0.42135754, 0.0061835395, -0.022561578)
+bones/10/rotation = Quaternion(-6.23045e-33, -1.24609e-32, -0.14677192, 0.9891704)
 bones/12/rotation = Quaternion(0.6427577, 0.7660696, -4.006928e-17, -4.7505403e-17)
-bones/13/position = Vector3(0.53249395, -7.917364e-05, -0.11233013)
+bones/13/position = Vector3(0.53252417, -7.9056495e-05, -0.11233013)
 
-[node name="PlayerBlob" parent="Skeleton3D" index="0" unique_id=370312671]
+[node name="PlayerBlob" parent="Skeleton3D" index="0" unique_id=420528647]
 material_override = ExtResource("2_rjpij")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=13628530]

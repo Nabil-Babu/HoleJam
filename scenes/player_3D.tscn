@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdnk51dbx3o0t" path="res://scripts/player_3d.gd" id="1_j5bdg"]
 [ext_resource type="PackedScene" uid="uid://c4xkloac0jlxg" path="res://scenes/player_blob.tscn" id="2_f32li"]
+[ext_resource type="PackedScene" uid="uid://cb622cwlvjljp" path="res://scenes/player_blob_v2.tscn" id="2_uk5sq"]
 [ext_resource type="PackedScene" uid="uid://5gmr4kpjs52h" path="res://scenes/player_hud.tscn" id="3_ljh36"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
@@ -39,8 +40,18 @@ debug_color = Color(0, 0.6, 0.69803923, 1)
 
 [node name="PlayerMesh" type="Node3D" parent="." unique_id=1766638063]
 
+[node name="PlayerBlob_V2" parent="PlayerMesh" unique_id=600462586 instance=ExtResource("2_uk5sq")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="PlayerMesh/PlayerBlob_V2" index="0" unique_id=1360574036]
+bones/0/position = Vector3(-0.013375629, 0.6245632, 7.216449e-18)
+bones/7/position = Vector3(0.43089616, 9.313226e-10, 0.022561578)
+bones/10/position = Vector3(0.44047767, 9.313226e-10, -0.022561578)
+bones/13/position = Vector3(0.5529207, -3.2423938e-12, -0.11233013)
+
 [node name="PlayerBlob" parent="PlayerMesh" unique_id=125532092 instance=ExtResource("2_f32li")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
 
 [node name="Head" type="Node3D" parent="." unique_id=638213514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -48,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=136830994]
 
 [node name="GrabAnchor" type="Marker3D" parent="Head" unique_id=1162836147]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24725068, -0.24215388, -1.4486454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1738615, -0.45772624, -1.4486454)
 
 [node name="InteractionRaycast" type="RayCast3D" parent="Head" unique_id=1513381122]
 target_position = Vector3(0, 0, -5)
@@ -104,3 +115,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_j5bdg")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=87279607]
 replication_config = SubResource("SceneReplicationConfig_j5bdg")
+
+[editable path="PlayerMesh/PlayerBlob_V2"]

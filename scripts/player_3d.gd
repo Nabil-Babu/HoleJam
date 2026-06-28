@@ -21,6 +21,7 @@ var is_reticle_active: bool = false
 @onready var grab_anchor: Node3D = $Head/GrabAnchor
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
 @onready var player_hud: Control = $PlayerHUD
+@onready var animator: AnimationPlayer = $PlayerMesh/PlayerBlob_V2/AnimationPlayer
 
 func _enter_tree() -> void: 
 	set_multiplayer_authority(name.to_int())
@@ -83,9 +84,12 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	else: 
+		animator.play("PlayerAnimations/Blob_Idle")
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		animator.stop()
 		
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -98,6 +102,7 @@ func _physics_process(delta: float) -> void:
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
 	if direction:
+		animator.play("PlayerAnimations/Blob_Walk")
 		velocity.x = direction.x * WALK_SPEED
 		velocity.z = direction.z * WALK_SPEED
 	else:
@@ -108,6 +113,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("sprint"):
 		velocity.x *= SPRINT_MULT
 		velocity.z *= SPRINT_MULT
+		animator.speed_scale = 2.0
+	else:
+		animator.speed_scale = 1.0
 		
 	# Execute built-in Godot physics simulation and collision handling
 	move_and_slide()

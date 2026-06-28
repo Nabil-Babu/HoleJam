@@ -11,6 +11,15 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+offsets = PackedFloat32Array(0.021367522, 0.46153846, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12225223, 0.12225223, 0.12225223, 1, 0.035072364, 0.035072364, 0.035072364, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5usaj"]
+gradient = SubResource("Gradient_sugp2")
+fill_from = Vector2(0.4871795, 0.115384616)
+fill_to = Vector2(0.4957265, 0.9102564)
+
 [node name="Main" type="Control" unique_id=135172665]
 layout_mode = 3
 anchors_preset = 15
@@ -100,6 +109,12 @@ transform = Transform3D(0.055844046, 0, -0.9984395, 0, 1, 0, 0.9984395, 0, 0.055
 billboard = 1
 text = "Score: 0"
 font_size = 128
+
+[node name="Sprite3D" type="Sprite3D" parent="GameScoreUI" unique_id=1942545227]
+transform = Transform3D(6, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+render_priority = -2
+texture = SubResource("GradientTexture2D_5usaj")
 
 [connection signal="pressed" from="LobbyUI/Margins/VBox/Button_Host" to="." method="_on_button_host_pressed"]
 [connection signal="pressed" from="LobbyUI/Margins/VBox/Button_Join" to="." method="_on_button_join_pressed"]
