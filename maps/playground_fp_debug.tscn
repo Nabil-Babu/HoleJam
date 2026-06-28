@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -10)
 use_collision = true
 collision_layer = 4
 collision_mask = 4
-size = Vector3(90, 1, 86)
+size = Vector3(100, 1, 100)
 material = ExtResource("2_8qy4v")
 
 [node name="Walls" type="Node3D" parent="Map" unique_id=232159798]

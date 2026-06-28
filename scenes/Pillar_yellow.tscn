@@ -3,7 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://cmam3nthkxpcx" path="res://models/Pillar_Yellow.fbx" id="1_h51al"]
 [ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_m1fis"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_h51al"]
+size = Vector3(1.3828621, 11.394409, 1.2788925)
+
 [node name="Pillar_Yellow" unique_id=1867728498 instance=ExtResource("1_h51al")]
 
-[node name="Pillar_Yellow" parent="." index="0" unique_id=142047399]
+[node name="Pillar_Yellow" parent="." index="0" unique_id=1913512453]
 material_override = ExtResource("2_m1fis")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1496934601]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=723053867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011205673, 5.687439, 0.0029792786)
+shape = SubResource("BoxShape3D_h51al")
