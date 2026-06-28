@@ -6,6 +6,10 @@ signal box_despawn
 @export var lowest_point: float = -10.0
 @export var held_by_peer_id: int = 0
 
+@export var XsizeRange: Vector2 = Vector2(1.0, 2.0)
+@export var YsizeRange: Vector2 = Vector2(1.0, 2.0)
+@export var ZsizeRange: Vector2 = Vector2(1.0, 2.0)
+
 
 var target_transform: Marker3D = null
 var is_following_target := false
@@ -14,6 +18,10 @@ func _ready() -> void:
 	if not multiplayer.is_server():
 		# Freeze the rigidbody on clients so local physics don't fight the server updates
 		freeze = true 
+	else: 
+		scale.x = randf_range(XsizeRange.x, XsizeRange.y)
+		scale.y = randf_range(YsizeRange.x, YsizeRange.y)
+		scale.z = randf_range(ZsizeRange.x, ZsizeRange.y)
 
 
 func _process(_delta: float) -> void:

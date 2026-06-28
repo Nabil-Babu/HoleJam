@@ -22,6 +22,14 @@ var is_reticle_active: bool = false
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
 @onready var player_hud: Control = $PlayerHUD
 @onready var animator: AnimationPlayer = $PlayerMesh/PlayerBlob_V2/AnimationPlayer
+@export var current_animation_name: StringName:
+	set(value):
+		current_animation_name = value
+		# Play the animation locally for all peers
+		if animator:
+			animator.play(current_animation_name)
+
+
 
 func _enter_tree() -> void: 
 	set_multiplayer_authority(name.to_int())
@@ -31,6 +39,7 @@ func _ready():
 	if is_multiplayer_authority():
 		camera.current = true; 
 		player_mesh.visible = false
+		current_animation_name = "PlayerAnimations/Blob_Idle"
 	else:
 		player_hud.visible = false
 
@@ -84,12 +93,10 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	else: 
-		animator.play("PlayerAnimations/Blob_Idle")
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		animator.stop()
+		#animator.stop()
 		
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -102,10 +109,13 @@ func _physics_process(delta: float) -> void:
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
 	if direction:
-		animator.play("PlayerAnimations/Blob_Walk")
+		current_animation_name = "PlayerAnimations/Blob_Walk"
+		play_animation.rpc(current_animation_name)
 		velocity.x = direction.x * WALK_SPEED
 		velocity.z = direction.z * WALK_SPEED
 	else:
+		current_animation_name = "PlayerAnimations/Blob_Idle"
+		play_animation.rpc(current_animation_name)
 		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 		velocity.z = move_toward(velocity.z, 0, WALK_SPEED)
 	
@@ -119,7 +129,11 @@ func _physics_process(delta: float) -> void:
 		
 	# Execute built-in Godot physics simulation and collision handling
 	move_and_slide()
-	
-	# Grabbing logic
-	if Input.is_action_just_pressed("grab"):
-		pass
+
+
+########################
+### RPC Functions
+
+@rpc("call_local", "reliable")
+func play_animation(animName : String):
+	animator.play(animName)
