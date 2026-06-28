@@ -64,7 +64,7 @@ func _input(event: InputEvent) -> void:
 				collider.request_pickup(grab_anchor)
 				held_object = collider
 			if collider.has_method("request_shove"):
-				collider.request_shove()
+				collider.request_shove(-global_transform.basis.z)
 
 
 func request_shove(force: Vector3):
