@@ -6,13 +6,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_3v62k"]
 
 [node name="Station" type="Node3D" unique_id=95766763]
-script = ExtResource("1_0r0hh")
 
 [node name="InputBoxArea" type="Area3D" parent="." unique_id=1345146910]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22510189, 2)
+collision_mask = 2
+script = ExtResource("1_0r0hh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InputBoxArea" unique_id=888689206]
-transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 1.8, 0.05, 0.5, -0.05)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.5, -0.05)
 shape = SubResource("BoxShape3D_3v62k")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1821499155]
@@ -89,6 +90,7 @@ material = ExtResource("2_rvx7u")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=368641281]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+layers = 4
 polygon = PackedVector2Array(-1, 0, -1, 1, 1, 0)
 depth = 2.0
 material = ExtResource("2_rvx7u")

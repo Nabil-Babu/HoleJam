@@ -147,7 +147,7 @@ func sync_shader_property(prop_name: String, value: Variant) -> void:
 		print("Warning: Mesh node not ready yet!")
 		return
 	
-	print("We are trying to change: " + prop_name + " to a value of: " + str(value))
+	#print("We are trying to change: " + prop_name + " to a value of: " + str(value))
 	# Fetch the material currently in use
 	var mat: Material = player_mesh.get_active_material(0)
 	

@@ -3,10 +3,31 @@
 [ext_resource type="Script" uid="uid://bdnk51dbx3o0t" path="res://scripts/player_3d.gd" id="1_j5bdg"]
 [ext_resource type="PackedScene" uid="uid://c4xkloac0jlxg" path="res://scenes/player_blob.tscn" id="2_f32li"]
 [ext_resource type="PackedScene" uid="uid://cb622cwlvjljp" path="res://scenes/player_blob_v2.tscn" id="2_uk5sq"]
-[ext_resource type="Material" uid="uid://b8fsb0nkicth6" path="res://Materials/MAT_Player.tres" id="3_h6frw"]
 [ext_resource type="PackedScene" uid="uid://5gmr4kpjs52h" path="res://scenes/player_hud.tscn" id="3_ljh36"]
+[ext_resource type="Shader" uid="uid://b2gj0f4fjbwhc" path="res://shaders/subsurf.gdshader" id="3_moq3g"]
+[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="4_vrrlt"]
+[ext_resource type="Texture2D" uid="uid://bb0qfd4my7nc5" path="res://Textures/Player_Mask.png" id="5_yx3qv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jemyy"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_moq3g")
+shader_parameter/albedo_texture = ExtResource("4_vrrlt")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/color_shift_amount = 0.05
+shader_parameter/color_selector = 0
+shader_parameter/skin_mask_texture = ExtResource("5_yx3qv")
+shader_parameter/color_coat = 0.1999999955296
+shader_parameter/oilyness = 0.499999988824
+shader_parameter/rim_amount = 0.5999999865888
+shader_parameter/rim_shape = 2.21999995410388
+shader_parameter/rim_color = Color(0.86826426, 0.9354378, 0.99999994, 1)
+shader_parameter/refraction_strength = 0.13999997451871993
+shader_parameter/blur_amount = 4.0
+shader_parameter/roughness_affect = 0.0
+shader_parameter/roughness = 0.5999999865888
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pxusy"]
 
@@ -32,7 +53,7 @@ properties/3/replication_mode = 1
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1395440502]
 collision_layer = 3
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_j5bdg")
 JUMP_VELOCITY = 6.0
 SPRINT_MULT = 2.0
@@ -55,7 +76,7 @@ bones/13/position = Vector3(0.5529207, -3.2423938e-12, -0.11233013)
 
 [node name="PlayerBlob" parent="PlayerMesh/PlayerBlob_V2/Skeleton3D" index="0" unique_id=420528647]
 material_override = null
-surface_material_override/0 = ExtResource("3_h6frw")
+surface_material_override/0 = SubResource("ShaderMaterial_jemyy")
 
 [node name="PlayerBlob" parent="PlayerMesh" unique_id=125532092 instance=ExtResource("2_f32li")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
