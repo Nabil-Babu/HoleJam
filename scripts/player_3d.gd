@@ -68,12 +68,12 @@ func _input(event: InputEvent) -> void:
 
 
 func request_shove(force: Vector3):
-	print("did you jsut ask to shove me?")
+	force *= 40.0
+	force.y += 2.5
 	shove.rpc(force)
 
 @rpc("any_peer", "call_local", "reliable")
 func shove(force: Vector3):
-	print("OH NO, a SHOVE HAS OCCURED")
 	velocity += force
 	
 

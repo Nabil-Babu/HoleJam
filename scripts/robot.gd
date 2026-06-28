@@ -10,6 +10,17 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var col_shape_2: CollisionShape3D = $CollisionShape3D2
 
 
+func request_shove(force: Vector3):
+	force *= 40.0
+	force.y += 2.5
+	shove.rpc(force)
+
+
+@rpc("any_peer", "call_local", "reliable")
+func shove(force: Vector3):
+	velocity += force
+
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
