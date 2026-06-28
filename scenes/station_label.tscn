@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dr3w6o44hmib8"]
+
+[ext_resource type="Script" uid="uid://b8rigbbk6s185" path="res://scripts/station_label.gd" id="1_bv0se"]
+[ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/floor_struture_material.tres" id="2_3ve3o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3v62k"]
+
+[sub_resource type="Gradient" id="Gradient_sugp2"]
+offsets = PackedFloat32Array(0.021367522, 0.46153846, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12225223, 0.12225223, 0.12225223, 1, 0.035072364, 0.035072364, 0.035072364, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5usaj"]
+gradient = SubResource("Gradient_sugp2")
+fill_from = Vector2(0.4871795, 0.115384616)
+fill_to = Vector2(0.4957265, 0.9102564)
+
+[node name="Station" type="Node3D" unique_id=95766763]
+
+[node name="InputBoxArea" type="Area3D" parent="." unique_id=1345146910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22510189, 2)
+collision_mask = 2
+script = ExtResource("1_bv0se")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InputBoxArea" unique_id=888689206]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.5, -0.05)
+shape = SubResource("BoxShape3D_3v62k")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1725448571]
+
+[node name="Label3D" type="Label3D" parent="Visuals" unique_id=84979937]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.1, 3.420743, 0)
+text = "LABEL MACHINE"
+
+[node name="Sprite3D" type="Sprite3D" parent="Visuals/Label3D" unique_id=1867525419]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.25547552, 0)
+render_priority = -2
+texture = SubResource("GradientTexture2D_5usaj")
+
+[node name="Label3D2" type="Label3D" parent="Visuals/Label3D" unique_id=1071259757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23571873, 0)
+text = "Doubles Box Value"
+font_size = 26
+
+[node name="Label3D3" type="Label3D" parent="Visuals/Label3D" unique_id=1193233975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47690797, 0)
+text = "A sorted box is a happy box =)"
+font_size = 20
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Visuals" unique_id=1821499155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 2, 2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 2, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Visuals" unique_id=365815790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 2.5, -2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 3, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Visuals" unique_id=1653175748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 0.5, 2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 1, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Visuals" unique_id=1351987522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 3, -2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 2, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Visuals" unique_id=332509329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95000005, 0.5, 2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 1, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Visuals" unique_id=631919030]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, 2.95)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 3, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Visuals" unique_id=1716539222]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2, -2.95)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 4, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Visuals" unique_id=1466051904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(2, 4, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Visuals" unique_id=1920706236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, -2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(2, 0.1, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="trap_door" type="CSGBox3D" parent="Visuals" unique_id=2085836842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6245805, 2)
+use_collision = true
+collision_layer = 8
+collision_mask = 8
+size = Vector3(2, 0.1, 2)
+material = ExtResource("2_3ve3o")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Visuals" unique_id=368641281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+polygon = PackedVector2Array(-1, 0, -1, 1, 1, 0)
+depth = 2.0
+material = ExtResource("2_3ve3o")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1826196046]
+_spawnable_scenes = PackedStringArray("uid://b230fgbtuwwmu")
+spawn_path = NodePath("../OutputLocation")
+spawn_limit = 20
+
+[node name="OutputLocation" type="Node3D" parent="." unique_id=49823113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2)
