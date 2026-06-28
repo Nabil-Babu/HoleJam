@@ -3,6 +3,8 @@ extends Control
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 
 @export var player_scene : PackedScene
+@export var game_score: int = 0
+
 @onready var lobby_ui: PanelContainer = $LobbyUI
 @onready var game_score_ui: Label3D = $GameScoreUI
 @onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
@@ -20,10 +22,11 @@ var join_code : String
 var is_joining := false
 var local_lobby_id : int = 0
 var boxCount: int = 0
-@export var game_score: int = 0
+var box_spawn_markers : Array[Node]
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
+	box_spawn_markers = box_container.get_children()
 	check_lobby_prompt()
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
 	if steam_init:
@@ -119,7 +122,21 @@ func spawn_box() -> void:
 	box.box_despawn.connect(box_despawned)
 	box.name = "BOX_" + str(boxCount) + "_" + str(local_lobby_id)
 	box_container.call_deferred("add_child", box, true)
+	
+	if box_spawn_markers.size() > 0:
+		var index = randi() % box_spawn_markers.size()
+		var box_pos = box_spawn_markers[index].global_position
+		var box_path = NodePath(str(box_container.get_path()) + "/" + str(box.name))
+		set_box_spawn_pos.rpc.call_deferred(box_pos, box_path)
 
+
+@rpc("any_peer", "call_local", "reliable")
+func set_box_spawn_pos(taret_pos: Vector3, path : NodePath):
+	print("Try to move the spawned box at: " + str(path))
+	var box = get_node(path)
+	if box:
+		print("found the box and moving it to: " + str(taret_pos))
+		box.global_position = taret_pos
 
 func box_despawned():
 	#print("Satan will despawn you little box <3")

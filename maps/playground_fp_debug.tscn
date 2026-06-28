@@ -684,21 +684,21 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.158623, -0.87273014, -13.1
 [node name="Robots" type="Node3D" parent="." unique_id=1381818184]
 
 [node name="Robot" parent="Robots" unique_id=1395440502 instance=ExtResource("4_ay45a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.766891, -0.27321422, -11.690823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.766891, -0.27321422, -8.102106)
 
 [node name="Robot2" parent="Robots" unique_id=1554207648 instance=ExtResource("4_ay45a")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 24.769344, -0.27321422, -11.690823)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 24.769344, -0.27321422, -23.387478)
 direction = Vector3(0, 0, -1)
 
 [node name="Robot3" parent="Robots" unique_id=1836618499 instance=ExtResource("4_ay45a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.683622, -0.27321422, -11.690823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.683622, -0.27321422, -20.351095)
 
 [node name="Robot4" parent="Robots" unique_id=93887272 instance=ExtResource("4_ay45a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.785484, -0.27321422, -11.690823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.785484, -0.27321422, -0.6761131)
 direction = Vector3(0, 0, -1)
 
 [node name="Robot5" parent="Robots" unique_id=1325383284 instance=ExtResource("4_ay45a")]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 18.49759, -0.27321422, -11.690823)
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 18.49759, -0.27321422, -17.508024)
 direction = Vector3(0, 0, -1)
 
 [node name="Stations" type="Node3D" parent="." unique_id=266792583]
