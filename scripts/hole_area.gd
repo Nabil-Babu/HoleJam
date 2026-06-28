@@ -7,8 +7,8 @@ func _ready() -> void:
 	
 func _on_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
-		body.set_collision_mask_value(4, false)
 		if body.has_signal("box_despawn"):
+			body.set_collision_mask_value(4, false)
 			if !body.box_despawn.is_connected(_update_score):
 				body.box_despawn.connect(_update_score)
 	if body is CharacterBody3D:
