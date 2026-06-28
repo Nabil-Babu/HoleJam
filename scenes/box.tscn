@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bopx36w8d04au"]
 
 [ext_resource type="Script" uid="uid://cvtjgp7feqa88" path="res://scripts/box.gd" id="1_3inec"]
+[ext_resource type="PackedScene" uid="uid://wtavdu7b32oj" path="res://scenes/NewBox.tscn" id="2_ks2v0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_32jr6"]
 friction = 0.6
 bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3v62k"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_3v62k"]
+size = Vector3(1.1413574, 0.67004395, 1.123291)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3inec"]
 properties/0/path = NodePath(".:position")
@@ -23,6 +23,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath(".:angular_velocity")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:scale")
+properties/4/spawn = true
+properties/4/replication_mode = 2
 
 [node name="Box" type="RigidBody3D" unique_id=562022807]
 collision_layer = 2
@@ -30,14 +33,15 @@ collision_mask = 6
 mass = 0.01
 physics_material_override = SubResource("PhysicsMaterial_32jr6")
 script = ExtResource("1_3inec")
+XsizeRange = Vector2(0.5, 3)
+ZsizeRange = Vector2(1, 1.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1809526209]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.1035156e-05, 0.16751099, -0.00018310547)
 shape = SubResource("BoxShape3D_3v62k")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=290861427]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_3v62k")
+[node name="Box" parent="." unique_id=297273385 instance=ExtResource("2_ks2v0")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1750490149]
 replication_config = SubResource("SceneReplicationConfig_3inec")

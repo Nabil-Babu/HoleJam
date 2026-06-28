@@ -135,5 +135,5 @@ func _physics_process(delta: float) -> void:
 ### RPC Functions
 
 @rpc("call_local", "reliable")
-func play_animation(name : String):
-	animator.play(name)
+func play_animation(animName : String):
+	animator.play(animName)
