@@ -33,7 +33,7 @@ var is_reticle_active: bool = false
 	set(new_value):
 		shader_color_selection = new_value
 		# 2. Update the shader material (using the exact uniform name from your shader code)
-		player_mat.material.set_shader_parameter("color_selector", shader_color_selection)
+		player_mat.get_active_material(0).set_shader_parameter("color_selector", shader_color_selection)
 
 
 func _enter_tree() -> void: 
