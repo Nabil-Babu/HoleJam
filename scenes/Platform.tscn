@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bjf1g7xxmw2j7"]
+
+[ext_resource type="PackedScene" uid="uid://bih7r4ghnng8g" path="res://models/Platform.fbx" id="1_motb6"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_wwpbi"]
+
+[node name="Platform" unique_id=810086964 instance=ExtResource("1_motb6")]
+
+[node name="Platform" parent="." index="0" unique_id=488831700]
+material_override = ExtResource("2_wwpbi")

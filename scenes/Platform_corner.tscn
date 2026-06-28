@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c6or8o8mfqdj7"]
+
+[ext_resource type="PackedScene" uid="uid://cts508qmktwhq" path="res://models/Platform_Corner.fbx" id="1_uelrl"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_kyhka"]
+
+[node name="Platform_Corner" unique_id=1469500104 instance=ExtResource("1_uelrl")]
+
+[node name="Platform_Corner" parent="." index="0" unique_id=1615334957]
+material_override = ExtResource("2_kyhka")

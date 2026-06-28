@@ -1,8 +1,8 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://b8fsb0nkicth6"]
 
 [ext_resource type="Shader" uid="uid://b2gj0f4fjbwhc" path="res://shaders/subsurf.gdshader" id="1_bylf6"]
-[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://textures/MainTexture.png" id="2_rllc8"]
-[ext_resource type="Texture2D" uid="uid://bb0qfd4my7nc5" path="res://textures/Player_Mask.png" id="3_jmums"]
+[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="2_rllc8"]
+[ext_resource type="Texture2D" uid="uid://bb0qfd4my7nc5" path="res://Textures/Player_Mask.png" id="3_jmums"]
 
 [resource]
 resource_local_to_scene = true
