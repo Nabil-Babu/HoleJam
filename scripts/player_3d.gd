@@ -41,7 +41,6 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		head.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-			
 		
 	if interaction_raycast.is_colliding() and not held_object:
 		if not is_reticle_active:
@@ -51,7 +50,7 @@ func _input(event: InputEvent) -> void:
 		if is_reticle_active:
 			is_reticle_active = false
 			player_hud.reticle_to_idle()
-	if event.is_action_pressed("grab") || Input.is_action_just_pressed("right_trigger") and is_multiplayer_authority():
+	if event.is_action_pressed("grab") || Input.is_action_just_pressed("right_trigger"):
 		#print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
 		if held_object:
 			held_object.request_throw(-camera.global_transform.basis.z * THROW_SPEED)
@@ -64,7 +63,19 @@ func _input(event: InputEvent) -> void:
 			if collider.has_method("request_pickup"):
 				collider.request_pickup(grab_anchor)
 				held_object = collider
-		
+			if collider.has_method("request_shove"):
+				collider.request_shove()
+
+
+func request_shove(force: Vector3):
+	print("did you jsut ask to shove me?")
+	shove.rpc("shove", force)
+
+@rpc("any_peer", "call_local", "reliable")
+func shove(force: Vector3):
+	print("OH NO, a SHOVE HAS OCCURED")
+	velocity += force
+	
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority():
