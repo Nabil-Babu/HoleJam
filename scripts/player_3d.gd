@@ -18,6 +18,7 @@ var is_reticle_active: bool = false
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var player_mesh: Node3D = $PlayerMesh
+@onready var player_mat: MeshInstance3D = $PlayerMesh/PlayerBlob_V2/Skeleton3D/PlayerBlob
 @onready var grab_anchor: Node3D = $Head/GrabAnchor
 @onready var interaction_raycast: RayCast3D = $Head/InteractionRaycast
 @onready var player_hud: Control = $PlayerHUD
@@ -28,7 +29,11 @@ var is_reticle_active: bool = false
 		# Play the animation locally for all peers
 		if animator:
 			animator.play(current_animation_name)
-
+@export var shader_color_selection: int = 0:
+	set(new_value):
+		shader_color_selection = new_value
+		# 2. Update the shader material (using the exact uniform name from your shader code)
+		player_mat.material.set_shader_parameter("color_selector", shader_color_selection)
 
 
 func _enter_tree() -> void: 
@@ -40,6 +45,7 @@ func _ready():
 		camera.current = true; 
 		player_mesh.visible = false
 		current_animation_name = "PlayerAnimations/Blob_Idle"
+		shader_color_selection = randi_range(0, 3)
 	else:
 		player_hud.visible = false
 

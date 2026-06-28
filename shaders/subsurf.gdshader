@@ -6,6 +6,8 @@ uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap_ani
 group_uniforms Color;
 uniform sampler2D albedo_texture : source_color; 
 uniform vec3 color_tint : source_color = vec3(1.0);
+uniform float color_shift_amount = 0.05;
+uniform int color_selector: hint_range(0, 3, 1) = 0;
 uniform sampler2D skin_mask_texture; 
 uniform float color_coat : hint_range(0.0, 1.0, 0.01) = 0.0;
 uniform float oilyness : hint_range(0.0, 2.0, 0.01) = 0.1;
@@ -32,6 +34,8 @@ float overlay(float base, float blend){
 }
 
 void fragment() {
+	vec2 uv = UV;
+	uv.x += float(color_selector) * color_shift_amount;
 	vec2 pixel_size = 1.0 / vec2(textureSize(screen_texture, 0));
 	
 	float fresnel = pow(clamp(1.0 - dot(NORMAL, VIEW),0.0, 1.0), 1.0);
@@ -47,15 +51,15 @@ void fragment() {
 	float coat_amount = pow(1.0 - color_coat, 1.0);
 	
 	
-	vec3 final = color_tint * texture(albedo_texture, UV).xyz * mix(vec3(1.0), glass, coat_amount);
+	vec3 final = color_tint * texture(albedo_texture, uv).xyz * mix(vec3(1.0), glass, coat_amount);
 	final = mix(final, rim_color, pow(fresnel, rim_shape) * rim_amount);
 	
 	final -= vec3((sin(NORMAL.xy * 10.0) * 0.5 + 0.5) * (0.1 * oilyness), 0.0);
 	
-	float mask = texture(skin_mask_texture, UV).x;
+	float mask = texture(skin_mask_texture, uv).x;
 	mask = step(mask,0.5);
 	
-	ALBEDO = final * vec3(1.0-mask) + texture(albedo_texture, UV).xyz * vec3(mask);
+	ALBEDO = final * vec3(1.0-mask) + texture(albedo_texture, uv).xyz * vec3(mask);
 	
 	EMISSION = ALBEDO * coat_amount;
 	
