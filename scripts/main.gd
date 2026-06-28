@@ -25,6 +25,7 @@ var boxCount: int = 0
 var box_spawn_markers : Array[Node]
 var player_spawn_markers : Array[Node]
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
+var game_scores: Dictionary[String, int] 
 
 func _ready() -> void: 
 	box_spawn_markers = box_container.get_children()
@@ -105,9 +106,9 @@ func add_player(id : int = 1):
 	print("Player joined with ID: " + str(id))
 	
 	if player_spawn_markers.size() > 0:
-		var index = randi() % player_spawn_markers.size()
-		var player_pos = player_spawn_markers[index].global_position
-		var player_path = NodePath(str(player_container.get_path()) + "/" + str(player.name))
+		var index: int = randi() % player_spawn_markers.size()
+		var player_pos: Vector3 = player_spawn_markers[index].global_position
+		var player_path: NodePath = NodePath(str(player_container.get_path()) + "/" + str(player.name))
 		set_player_spawn_pos.rpc.call_deferred(player_pos, player_path)
 
 
@@ -132,9 +133,9 @@ func spawn_box() -> void:
 	box_container.call_deferred("add_child", box, true)
 	
 	if box_spawn_markers.size() > 0:
-		var index = randi() % box_spawn_markers.size()
-		var box_pos = box_spawn_markers[index].global_position
-		var box_path = NodePath(str(box_container.get_path()) + "/" + str(box.name))
+		var index: int = randi() % box_spawn_markers.size()
+		var box_pos: Vector3 = box_spawn_markers[index].global_position
+		var box_path: NodePath = NodePath(str(box_container.get_path()) + "/" + str(box.name))
 		set_box_spawn_pos.rpc.call_deferred(box_pos, box_path)
 
 
@@ -154,14 +155,14 @@ func check_lobby_prompt():
 
 @rpc("any_peer", "call_local", "reliable")
 func set_box_spawn_pos(taret_pos: Vector3, path : NodePath):
-	var box = get_node(path)
+	var box: Node = get_node(path)
 	if box:
 		box.global_position = taret_pos
 
 
 @rpc("any_peer", "call_local", "reliable")
 func set_player_spawn_pos(taret_pos: Vector3, path : NodePath):
-	var player = get_node(path)
+	var player: Node = get_node(path)
 	if player:
 		player.global_position = taret_pos
 
@@ -180,6 +181,19 @@ func update_game_score(new_score: int):
 		print("Server Score: %d" % game_score)
 		broadcast_updated_score.rpc(game_score)
 		game_score_ui.text = "Score: "+str(game_score)
+		
+@rpc("any_peer", "call_local", "reliable")
+func update_game_score_dict(team: String, new_score: int) -> void:
+	if !multiplayer.is_server():
+		return
+	if game_scores.has(team):
+		game_scores[team]+=new_score
+		if(game_scores[team] < 0): 
+			game_scores[team] = 0
+
+@rpc("any_peer", "call_local", "reliable")	
+func get_game_score(team: String) -> void:
+	pass
 
 
 @rpc("authority", "call_remote", "reliable")
