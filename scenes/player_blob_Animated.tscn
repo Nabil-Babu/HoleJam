@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bigiwtwhcg6jd"]
+
+[ext_resource type="PackedScene" uid="uid://dd0thmrkw4qtv" path="res://models/PlayerBlob_Rigged.fbx" id="1_mr2m0"]
+[ext_resource type="Material" uid="uid://b8fsb0nkicth6" path="res://Materials/MAT_Player.tres" id="2_potre"]
+[ext_resource type="Animation" uid="uid://boh7gj1b3n5ua" path="res://Animations/Blob_Idle.res" id="3_potre"]
+[ext_resource type="Animation" uid="uid://687dk7wrucg7" path="res://Animations/Blob_Walk.res" id="4_djm6k"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w3hqo"]
+_data = {
+&"Blob_Idle": ExtResource("3_potre"),
+&"Blob_Walk": ExtResource("4_djm6k")
+}
+
+[node name="PlayerBlob_Rigged" unique_id=1622923678 instance=ExtResource("1_mr2m0")]
+
+[node name="Skeleton3D" parent="." index="0" unique_id=850457782]
+bones/0/position = Vector3(-0.013375629, 0.62242913, 7.216449e-18)
+bones/7/position = Vector3(0.4288646, 0.0006536171, 0.022561578)
+bones/7/rotation = Quaternion(0.9779761, -0.16195604, 0.13023253, 0.019305225)
+bones/8/position = Vector3(0.21047467, 0, 1.7763568e-17)
+bones/10/position = Vector3(0.43844715, 0.0006566802, -0.022561582)
+bones/10/rotation = Quaternion(-0.022857187, -0.13685901, -0.1453519, 0.9796019)
+bones/12/rotation = Quaternion(0.6427577, 0.7660696, -4.006928e-17, -4.7505403e-17)
+bones/13/position = Vector3(0.5441218, -3.4104523e-05, -0.11233013)
+
+[node name="PlayerBlob" parent="Skeleton3D" index="0" unique_id=1923879453]
+material_override = ExtResource("2_potre")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=1550542745]
+libraries/Blob_Animation_Library = SubResource("AnimationLibrary_w3hqo")
