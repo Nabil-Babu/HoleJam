@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://b6yqsghfkdtsi"]
 
 [ext_resource type="Script" uid="uid://bdluqrvosmreg" path="res://scripts/hole_area.gd" id="1_7c8wj"]
+[ext_resource type="Shader" uid="uid://bu12ck2mvw72" path="res://shaders/black_hole.gdshader" id="2_nbscq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pxusy"]
-height = 0.196
+height = 4.078822
 radius = 1.92
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pritd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbscq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbscq"]
+render_priority = 0
+shader = ExtResource("2_nbscq")
+shader_parameter/hole_depth = 0.10000000149012
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ekkxi"]
 top_radius = 0.891
@@ -17,10 +24,11 @@ collision_mask = 2
 script = ExtResource("1_7c8wj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1927764764]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0045270324, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.16242, 0)
 shape = SubResource("CylinderShape3D_pxusy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1213561387]
-transform = Transform3D(2.2417524, 0, 0, 0, 1.5, 0, 0, 0, 2.2002711, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_pritd")
+[node name="HoleMesh" type="MeshInstance3D" parent="." unique_id=1213561387]
+transform = Transform3D(2.2417524, 0, 0, 0, 1.5, 0, 0, 0, 2.2002711, 0, -0.30759895, 0)
+material_override = SubResource("StandardMaterial3D_nbscq")
+material_overlay = SubResource("ShaderMaterial_nbscq")
 mesh = SubResource("CylinderMesh_ekkxi")

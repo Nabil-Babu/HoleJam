@@ -11,11 +11,16 @@ func _on_body_entered(body: Node3D) -> void:
 		if body.has_signal("box_despawn"):
 			if !body.box_despawn.is_connected(_update_score):
 				body.box_despawn.connect(_update_score)
+	if body is CharacterBody3D:
+		body.set_collision_mask_value(3, false)
 
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is RigidBody3D:
 		body.set_collision_mask_value(3, true)
+	if body is CharacterBody3D:
+		body.set_collision_mask_value(3, true)
+		body.call_deferred("set_global_position", Vector3(0,0,0))
 
 
 func _update_score():
