@@ -5,5 +5,5 @@
 
 [node name="PlayerBlob" unique_id=125532092 instance=ExtResource("1_h8sfb")]
 
-[node name="PlayerBlob" parent="." index="0" unique_id=1476716082]
+[node name="PlayerBlob" parent="." index="0" unique_id=244858395]
 material_override = ExtResource("2_7st3p")
