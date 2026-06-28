@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_1lfvl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n4yaj"]
-size = Vector3(10.258156, 1.5861816, 0.47973633)
+size = Vector3(10.258156, 2.9918213, 0.47973633)
 
 [node name="Fencing" unique_id=2020405466 instance=ExtResource("1_n4yaj")]
 
@@ -16,5 +16,5 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=180585612]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.091625, 4.123169, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.091625, 4.825989, 0)
 shape = SubResource("BoxShape3D_n4yaj")
