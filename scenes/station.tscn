@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dr3w6o44hmib8"]
+
+[ext_resource type="Script" uid="uid://b8rigbbk6s185" path="res://scripts/station.gd" id="1_0r0hh"]
+[ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/floor_struture_material.tres" id="2_rvx7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3v62k"]
+
+[node name="Station" type="Node3D" unique_id=95766763]
+
+[node name="InputBoxArea" type="Area3D" parent="." unique_id=1345146910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22510189, 2)
+collision_mask = 2
+script = ExtResource("1_0r0hh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InputBoxArea" unique_id=888689206]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.5, -0.05)
+shape = SubResource("BoxShape3D_3v62k")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1821499155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 2, 2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 2, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=365815790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 2, -2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 2, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1653175748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 0.5, 2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 1, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=1351987522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 2.5, -2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 1, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=332509329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95000005, 0.5, 2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 1, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=631919030]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, 2.95)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 3, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=1716539222]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1.5, -2.95)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(0.1, 3, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1466051904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(2, 3, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=1920706236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95, -2)
+use_collision = true
+collision_layer = 4
+collision_mask = 4
+size = Vector3(2, 0.1, 2)
+material = ExtResource("2_rvx7u")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=368641281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+layers = 4
+polygon = PackedVector2Array(-1, 0, -1, 1, 1, 0)
+depth = 2.0
+material = ExtResource("2_rvx7u")

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bjf1g7xxmw2j7" path="res://scenes/Platform.tscn" id="11_205a4"]
 [ext_resource type="PackedScene" uid="uid://c6or8o8mfqdj7" path="res://scenes/Platform_corner.tscn" id="12_ft6i4"]
 [ext_resource type="PackedScene" uid="uid://i5gns5qsub7e" path="res://scenes/Fencing.tscn" id="13_ft6i4"]
+[ext_resource type="PackedScene" uid="uid://dr3w6o44hmib8" path="res://scenes/station.tscn" id="13_sejmd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,8 +44,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.393055, -2, 0)
 [node name="CSGBox3D" type="CSGBox3D" parent="Map" unique_id=722694226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -10)
 use_collision = true
-collision_layer = 4
-collision_mask = 4
+collision_layer = 8
+collision_mask = 8
 size = Vector3(100, 1, 100)
 material = ExtResource("2_8qy4v")
 
@@ -674,11 +675,33 @@ transform = Transform3D(1.0953699, 0, 0, 0, 0.517853, 0, 0, 0, 1, 40.470676, -2.
 [node name="Button" parent="." unique_id=1044116725 instance=ExtResource("3_32jr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6244845, -2, -14.483874)
 
-[node name="Robot" parent="." unique_id=1395440502 instance=ExtResource("4_ay45a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.461298, -0.27321422, -11.690823)
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=258559428]
 transform = Transform3D(0.51351506, 0.4341906, -0.74012214, 0, 0.86253226, 0.5060021, 0.85808057, -0.2598397, 0.44292328, -3.1294842, 5.39988, -9.590588)
 
 [node name="HoleArea" parent="." unique_id=924395208 instance=ExtResource("3_ay45a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.52463, -1.0666816, -13.113611)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.158623, -0.87273014, -13.113611)
+
+[node name="Robots" type="Node3D" parent="." unique_id=1381818184]
+
+[node name="Robot" parent="Robots" unique_id=1395440502 instance=ExtResource("4_ay45a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.766891, -0.27321422, -11.690823)
+
+[node name="Robot2" parent="Robots" unique_id=1554207648 instance=ExtResource("4_ay45a")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 24.769344, -0.27321422, -11.690823)
+direction = Vector3(0, 0, -1)
+
+[node name="Robot3" parent="Robots" unique_id=1836618499 instance=ExtResource("4_ay45a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.683622, -0.27321422, -11.690823)
+
+[node name="Robot4" parent="Robots" unique_id=93887272 instance=ExtResource("4_ay45a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.785484, -0.27321422, -11.690823)
+direction = Vector3(0, 0, -1)
+
+[node name="Robot5" parent="Robots" unique_id=1325383284 instance=ExtResource("4_ay45a")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 18.49759, -0.27321422, -11.690823)
+direction = Vector3(0, 0, -1)
+
+[node name="Stations" type="Node3D" parent="." unique_id=266792583]
+
+[node name="Station" parent="Stations" unique_id=95766763 instance=ExtResource("13_sejmd")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, -1.5, -24)
