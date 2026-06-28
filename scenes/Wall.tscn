@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://7lobmhklu0hk"]
+
+[ext_resource type="PackedScene" uid="uid://cynrvrmb6wfgk" path="res://models/Wall.fbx" id="1_awoh5"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_r2q6n"]
+
+[node name="Wall" unique_id=403222939 instance=ExtResource("1_awoh5")]
+
+[node name="Wall" parent="." index="0" unique_id=1961243509]
+material_override = ExtResource("2_r2q6n")

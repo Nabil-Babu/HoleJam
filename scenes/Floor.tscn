@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://5cmj3sc8u1qu"]
+
+[ext_resource type="PackedScene" uid="uid://dlufcd4kvcpli" path="res://models/Floor.fbx" id="1_al5gx"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_vkctt"]
+
+[node name="Floor" unique_id=1400315540 instance=ExtResource("1_al5gx")]
+
+[node name="Floor" parent="." index="0" unique_id=1467934271]
+material_override = ExtResource("2_vkctt")
