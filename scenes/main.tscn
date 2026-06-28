@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ng5vjc3hived" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://wmq8c5cvnn67" path="res://scenes/player_3D.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://bibc05t77kxfx" path="res://maps/playground_fp_debug.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bibc05t77kxfx" path="res://maps/factory_level.tscn" id="3_sugp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v62k"]
 bg_color = Color(1, 1, 1, 0.24313726)
