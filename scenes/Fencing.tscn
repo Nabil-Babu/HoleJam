@@ -3,7 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://bhfxlgb52708k" path="res://models/Fencing.fbx" id="1_n4yaj"]
 [ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_1lfvl"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4yaj"]
+size = Vector3(10.258156, 1.5861816, 0.47973633)
+
 [node name="Fencing" unique_id=2020405466 instance=ExtResource("1_n4yaj")]
 
-[node name="Fencing" parent="." index="0" unique_id=1177026855]
+[node name="Fencing" parent="." index="0" unique_id=399017226]
 material_override = ExtResource("2_1lfvl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1084902601]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=180585612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.091625, 4.123169, 0)
+shape = SubResource("BoxShape3D_n4yaj")
