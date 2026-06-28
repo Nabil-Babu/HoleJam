@@ -23,10 +23,12 @@ var is_joining := false
 var local_lobby_id : int = 0
 var boxCount: int = 0
 var box_spawn_markers : Array[Node]
+var player_spawn_markers : Array[Node]
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
 
 func _ready() -> void: 
 	box_spawn_markers = box_container.get_children()
+	player_spawn_markers = player_container.get_children()
 	check_lobby_prompt()
 	var steam_init := Steam.steamInit(STEAM_APP_ID, true)
 	if steam_init:
@@ -101,6 +103,12 @@ func add_player(id : int = 1):
 	if multiplayer.is_server() && id != 1:
 		broadcast_updated_score.rpc_id(id,game_score)
 	print("Player joined with ID: " + str(id))
+	
+	if player_spawn_markers.size() > 0:
+		var index = randi() % player_spawn_markers.size()
+		var player_pos = player_spawn_markers[index].global_position
+		var player_path = NodePath(str(player_container.get_path()) + "/" + str(player.name))
+		set_player_spawn_pos.rpc.call_deferred(player_pos, player_path)
 
 
 func remove_player(id : int) -> void:
@@ -130,14 +138,6 @@ func spawn_box() -> void:
 		set_box_spawn_pos.rpc.call_deferred(box_pos, box_path)
 
 
-@rpc("any_peer", "call_local", "reliable")
-func set_box_spawn_pos(taret_pos: Vector3, path : NodePath):
-	print("Try to move the spawned box at: " + str(path))
-	var box = get_node(path)
-	if box:
-		print("found the box and moving it to: " + str(taret_pos))
-		box.global_position = taret_pos
-
 func box_despawned():
 	#print("Satan will despawn you little box <3")
 	boxCount -= 1
@@ -151,6 +151,20 @@ func check_lobby_prompt():
 ################################################################################
 ######## RPC Functions ########
 ################################################################################
+
+@rpc("any_peer", "call_local", "reliable")
+func set_box_spawn_pos(taret_pos: Vector3, path : NodePath):
+	var box = get_node(path)
+	if box:
+		box.global_position = taret_pos
+
+
+@rpc("any_peer", "call_local", "reliable")
+func set_player_spawn_pos(taret_pos: Vector3, path : NodePath):
+	var player = get_node(path)
+	if player:
+		player.global_position = taret_pos
+
 
 # "authority" means only the server/master can call this on peers.
 # "reliable" ensures the message packet is guaranteed to arrive.

@@ -91,6 +91,18 @@ spawn_path = NodePath("PlayerContainer")
 
 [node name="PlayerContainer" type="Node3D" parent="MP_PlayerSpawner" unique_id=2064306461]
 
+[node name="PlayerSpawnPos" type="Marker3D" parent="MP_PlayerSpawner/PlayerContainer" unique_id=428263202]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="PlayerSpawnPos2" type="Marker3D" parent="MP_PlayerSpawner/PlayerContainer" unique_id=462673316]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -5)
+
+[node name="PlayerSpawnPos3" type="Marker3D" parent="MP_PlayerSpawner/PlayerContainer" unique_id=1792418834]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -12)
+
+[node name="PlayerSpawnPos4" type="Marker3D" parent="MP_PlayerSpawner/PlayerContainer" unique_id=1246985963]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -19)
+
 [node name="MP_BoxSpawner" type="MultiplayerSpawner" parent="." unique_id=1120116706]
 _spawnable_scenes = PackedStringArray("uid://bopx36w8d04au")
 spawn_path = NodePath("BoxContainer")
