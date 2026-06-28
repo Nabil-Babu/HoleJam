@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cn85wpysisiuf"]
+
+[ext_resource type="PackedScene" uid="uid://cmam3nthkxpcx" path="res://models/Pillar_Yellow.fbx" id="1_h51al"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_m1fis"]
+
+[node name="Pillar_Yellow" unique_id=1867728498 instance=ExtResource("1_h51al")]
+
+[node name="Pillar_Yellow" parent="." index="0" unique_id=142047399]
+material_override = ExtResource("2_m1fis")
