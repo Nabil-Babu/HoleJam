@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b8fsb0nkicth6"]
+
+[ext_resource type="Shader" uid="uid://b2gj0f4fjbwhc" path="res://shaders/subsurf.gdshader" id="1_bylf6"]
+[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://textures/MainTexture.png" id="2_rllc8"]
+[ext_resource type="Texture2D" uid="uid://bb0qfd4my7nc5" path="res://textures/Player_Mask.png" id="3_jmums"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bylf6")
+shader_parameter/albedo_texture = ExtResource("2_rllc8")
+shader_parameter/color_tint = Color(1, 1, 1, 1)
+shader_parameter/skin_mask_texture = ExtResource("3_jmums")
+shader_parameter/color_coat = 0.1999999955296
+shader_parameter/oilyness = 0.499999988824
+shader_parameter/rim_amount = 0.5999999865888
+shader_parameter/rim_shape = 2.21999995410388
+shader_parameter/rim_color = Color(0.3244314, 0.68932927, 0.9999983, 1)
+shader_parameter/refraction_strength = 0.13999997451871993
+shader_parameter/blur_amount = 4.0
+shader_parameter/roughness_affect = 0.0
+shader_parameter/roughness = 0.5999999865888
