@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	label.text = str(spawnTime) + label_text
 	label2.text = str(spawnTime) + label_text
 	if timer >= spawnTime:
-		spawn_a_box.rpc()
+		spawn_a_box.rpc_id(1)
 		timer = 0.0
 
 
