@@ -19,6 +19,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if global_position.y < lowest_point:
 		despawn.rpc()
+		
+func _physics_process(_delta: float) -> void:
+	if target_transform:
+		set_rotation(rotation.slerp(target_transform.global_rotation, attract_speed * _delta))
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

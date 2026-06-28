@@ -95,7 +95,7 @@ func add_player(id : int = 1):
 	var player: Node = player_scene.instantiate()
 	player.name = str(id)
 	player_container.call_deferred("add_child", player, true)
-	if multiplayer.is_server():
+	if multiplayer.is_server() && id != 1:
 		broadcast_updated_score.rpc_id(id,game_score)
 	print("Player joined with ID: " + str(id))
 
