@@ -30,6 +30,8 @@ func _ready():
 	if is_multiplayer_authority():
 		camera.current = true; 
 		player_mesh.visible = false
+	else:
+		player_hud.visible = false
 
 
 func _input(event: InputEvent) -> void:
