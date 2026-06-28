@@ -24,5 +24,4 @@ func _process(delta: float) -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func spawn_a_box():
-	print("spawning a boxx now <3")
 	main_server.spawn_box()
