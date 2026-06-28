@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bjf1g7xxmw2j7" path="res://scenes/Platform.tscn" id="11_205a4"]
 [ext_resource type="PackedScene" uid="uid://c6or8o8mfqdj7" path="res://scenes/Platform_corner.tscn" id="12_ft6i4"]
 [ext_resource type="PackedScene" uid="uid://i5gns5qsub7e" path="res://scenes/Fencing.tscn" id="13_ft6i4"]
-[ext_resource type="PackedScene" uid="uid://dr3w6o44hmib8" path="res://scenes/station.tscn" id="13_sejmd"]
+[ext_resource type="PackedScene" uid="uid://dr3w6o44hmib8" path="res://scenes/station_label.tscn" id="13_sejmd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

@@ -10,18 +10,20 @@ signal box_despawn
 @export var YsizeRange: Vector2 = Vector2(1.0, 2.0)
 @export var ZsizeRange: Vector2 = Vector2(1.0, 2.0)
 
-
+var boxScore: int = 10
 var target_transform: Marker3D = null
 var is_following_target := false
+var is_labelled := false
 
 func _ready() -> void:
 	if not multiplayer.is_server():
 		# Freeze the rigidbody on clients so local physics don't fight the server updates
 		freeze = true 
 	else: 
-		scale.x = randf_range(XsizeRange.x, XsizeRange.y)
-		scale.y = randf_range(YsizeRange.x, YsizeRange.y)
-		scale.z = randf_range(ZsizeRange.x, ZsizeRange.y)
+		if not is_labelled:
+			scale.x = randf_range(XsizeRange.x, XsizeRange.y)
+			scale.y = randf_range(YsizeRange.x, YsizeRange.y)
+			scale.z = randf_range(ZsizeRange.x, ZsizeRange.y)
 
 
 func _process(_delta: float) -> void:

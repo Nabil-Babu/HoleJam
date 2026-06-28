@@ -36,16 +36,6 @@ transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 1, 0, -0.25547552, 0)
 render_priority = -2
 texture = SubResource("GradientTexture2D_5usaj")
 
-[node name="Label3D2" type="Label3D" parent="Visuals/Label3D" unique_id=1071259757]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23571873, 0)
-text = "Doubles Box Value"
-font_size = 26
-
-[node name="Label3D3" type="Label3D" parent="Visuals/Label3D" unique_id=1193233975]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47690797, 0)
-text = "A sorted box is a happy box =)"
-font_size = 20
-
 [node name="CSGBox3D4" type="CSGBox3D" parent="Visuals" unique_id=1821499155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 2, 2)
 use_collision = true

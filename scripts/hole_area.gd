@@ -7,10 +7,10 @@ func _ready() -> void:
 	
 func _on_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
-		body.set_collision_mask_value(4, false)
 		if body.has_signal("box_despawn"):
-			if !body.box_despawn.is_connected(_update_score):
-				body.box_despawn.connect(_update_score)
+			body.set_collision_mask_value(4, false)
+			if !body.box_despawn.is_connected(_update_score.bind(body.boxScore)):
+				body.box_despawn.connect(_update_score.bind(body.boxScore))
 	if body is CharacterBody3D:
 		body.set_collision_mask_value(4, false)
 
@@ -23,5 +23,5 @@ func _on_body_exited(body: Node3D) -> void:
 		body.call_deferred("set_global_position", Vector3(0,0,0))
 
 
-func _update_score():
-	get_parent().get_parent().update_game_score(10)
+func _update_score(points: int):
+	get_parent().get_parent().update_game_score(points)
