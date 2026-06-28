@@ -31,7 +31,7 @@ func _complete_station_task():
 	spawn_labelled_box(input_box_scale)
 
 
-func spawn_labelled_box(input_scale: Vector3):
+func spawn_labelled_box(_input_scale: Vector3):
 	if not multiplayer.is_server():
 		return
 	#print("LABEL INCOMING")
