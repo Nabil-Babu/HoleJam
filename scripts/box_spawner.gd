@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if not multiplayer.is_server():
+		return
 	timer += delta
 	label.text = str(spawnTime) + label_text
 	label2.text = str(spawnTime) + label_text
