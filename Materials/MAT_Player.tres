@@ -1,18 +1,18 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://b8fsb0nkicth6"]
 
 [ext_resource type="Shader" uid="uid://b2gj0f4fjbwhc" path="res://shaders/subsurf.gdshader" id="1_bylf6"]
-[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="2_rllc8"]
-[ext_resource type="Texture2D" uid="uid://bb0qfd4my7nc5" path="res://Textures/Player_Mask.png" id="3_jmums"]
+[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="2_bylf6"]
+[ext_resource type="Texture2D" uid="uid://bb0qfd4my7nc5" path="res://Textures/Player_Mask.png" id="3_rllc8"]
 
 [resource]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_bylf6")
-shader_parameter/albedo_texture = ExtResource("2_rllc8")
+shader_parameter/albedo_texture = ExtResource("2_bylf6")
 shader_parameter/color_tint = Color(1, 1, 1, 1)
 shader_parameter/color_shift_amount = 0.05
 shader_parameter/color_selector = 0
-shader_parameter/skin_mask_texture = ExtResource("3_jmums")
+shader_parameter/skin_mask_texture = ExtResource("3_rllc8")
 shader_parameter/color_coat = 0.1999999955296
 shader_parameter/oilyness = 0.499999988824
 shader_parameter/rim_amount = 0.5999999865888
