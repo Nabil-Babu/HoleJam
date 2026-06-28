@@ -41,5 +41,6 @@ func spawn_labelled_box(input_scale: Vector3):
 	#box.box_despawn.connect(box_despawned)
 	box.is_labelled = true
 	box.scale = input_box_scale
+	box.boxScore *= 2
 	box.name = "BOX_LABELLED_" + str(labelled_box_count)
 	output_location.call_deferred("add_child", box, true)
