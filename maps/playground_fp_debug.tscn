@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dntq02bth32fv" path="res://scenes/Pillar_white.tscn" id="10_osvuk"]
 [ext_resource type="PackedScene" uid="uid://bjf1g7xxmw2j7" path="res://scenes/Platform.tscn" id="11_205a4"]
 [ext_resource type="PackedScene" uid="uid://c6or8o8mfqdj7" path="res://scenes/Platform_corner.tscn" id="12_ft6i4"]
+[ext_resource type="PackedScene" uid="uid://i5gns5qsub7e" path="res://scenes/Fencing.tscn" id="13_ft6i4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -766,3 +767,53 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -80.
 
 [node name="Platform_Corner4" parent="Platforms" unique_id=1683737164 instance=ExtResource("12_ft6i4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -75.39413, 0, 56.432194)
+
+[node name="Fences" type="Node3D" parent="." unique_id=1156757501]
+
+[node name="Fencing" parent="Fences" unique_id=2020405466 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0958109, 0, 0, 0, 0.517853, 0, -3.5527137e-15, 0, 1, 29.231743, -1.4999992, -30.484863)
+
+[node name="Fencing2" parent="Fences" unique_id=163388416 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(-4.7065935e-08, 0, -1, 0, 0.517853, 0, 1.0767431, 0, -4.371139e-08, -4.3773403, -1.4999992, -7.3983955)
+
+[node name="Fencing3" parent="Fences" unique_id=1674261680 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(-4.788014e-08, 0, -1, 0, 0.517853, 0, 1.0953699, 0, -4.371139e-08, -4.3773403, -1.4999992, -18.44621)
+
+[node name="Fencing4" parent="Fences" unique_id=2018543759 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(-4.7899416e-08, 0, -1, 0, 0.517853, 0, 1.0958109, 0, -4.371139e-08, -4.3773403, -1.4999992, 3.8450623)
+
+[node name="Fencing5" parent="Fences" unique_id=1676196047 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0767431, 0, 0, 0, 0.517853, 0, 0, 0, 1, 17.988285, -1.4999992, -30.484863)
+
+[node name="Fencing6" parent="Fences" unique_id=16118039 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0953699, 0, 0, 0, 0.517853, 0, 0, 0, 1, 6.9404697, -1.4999992, -30.484863)
+
+[node name="Fencing7" parent="Fences" unique_id=990456724 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(-4.7899412e-08, 0, -1, 0, 0.517853, 0, 1.0958109, 0, -4.371139e-08, 53.486057, -1.4999992, -18.544199)
+
+[node name="Fencing10" parent="Fences" unique_id=1061208974 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(-4.7899412e-08, 0, -1, 0, 0.517853, 0, 1.0958109, 0, -4.371139e-08, 53.486053, -1.4999992, -7.300741)
+
+[node name="Fencing11" parent="Fences" unique_id=1878956309 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(-4.7899412e-08, 0, -1, 0, 0.517853, 0, 1.0958109, 0, -4.371139e-08, 53.486053, -1.4999992, 3.9427166)
+
+[node name="Fencing8" parent="Fences" unique_id=173609087 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.1973773, 0, 0, 0, 0.517853, 0, 0, 0, 1, 52.75625, -1.4999992, -30.484863)
+
+[node name="Fencing9" parent="Fences" unique_id=1459604881 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0953699, 0, 0, 0, 0.517853, 0, 0, 0, 1, 40.470676, -1.4999992, -30.484863)
+
+[node name="Fencing12" parent="Fences" unique_id=638058168 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0958109, 0, 0, 0, 0.517853, 0, -3.5527137e-15, 0, 1, 29.231743, -1.4999992, 4.051346)
+
+[node name="Fencing13" parent="Fences" unique_id=125879025 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0767431, 0, 0, 0, 0.517853, 0, 0, 0, 1, 17.988285, -1.4999992, 4.051346)
+
+[node name="Fencing14" parent="Fences" unique_id=565519014 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0953699, 0, 0, 0, 0.517853, 0, 0, 0, 1, 6.9404697, -1.4999992, 4.051346)
+
+[node name="Fencing15" parent="Fences" unique_id=13842423 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.1973773, 0, 0, 0, 0.517853, 0, 0, 0, 1, 52.75625, -1.4999992, 4.051346)
+
+[node name="Fencing16" parent="Fences" unique_id=693927583 instance=ExtResource("13_ft6i4")]
+transform = Transform3D(1.0953699, 0, 0, 0, 0.517853, 0, 0, 0, 1, 40.470676, -1.4999992, 4.051346)

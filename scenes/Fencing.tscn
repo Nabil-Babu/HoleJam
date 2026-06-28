@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://i5gns5qsub7e"]
+
+[ext_resource type="PackedScene" uid="uid://bhfxlgb52708k" path="res://models/Fencing.fbx" id="1_n4yaj"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_1lfvl"]
+
+[node name="Fencing" unique_id=2020405466 instance=ExtResource("1_n4yaj")]
+
+[node name="Fencing" parent="." index="0" unique_id=1177026855]
+material_override = ExtResource("2_1lfvl")
