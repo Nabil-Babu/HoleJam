@@ -40,7 +40,7 @@ func _ready():
 		camera.current = true; 
 		player_visuals.visible = false
 		current_animation_name = "PlayerAnimations/Blob_Idle"
-		sync_shader_property("color_selector", randi_range(0,3))
+		sync_shader_property.rpc("color_selector", randi_range(0,3))
 	else:
 		player_hud.visible = false
 
