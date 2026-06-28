@@ -32,7 +32,6 @@ var is_reticle_active: bool = false
 @export var shader_color_selection: int = 0:
 	set(new_value):
 		shader_color_selection = new_value
-		# 2. Update the shader material (using the exact uniform name from your shader code)
 		player_mat.get_active_material(0).set_shader_parameter("color_selector", shader_color_selection)
 
 
@@ -45,7 +44,7 @@ func _ready():
 		camera.current = true; 
 		player_mesh.visible = false
 		current_animation_name = "PlayerAnimations/Blob_Idle"
-		shader_color_selection = randi_range(0, 3)
+		#shader_color_selection = randi_range(0, 3)
 	else:
 		player_hud.visible = false
 
@@ -68,6 +67,7 @@ func _input(event: InputEvent) -> void:
 			player_hud.reticle_to_idle()
 	if event.is_action_pressed("grab") || Input.is_action_just_pressed("right_trigger"):
 		#print("doing a grab move from player: " + str(multiplayer.get_unique_id()))
+		shader_color_selection = randi_range(0, 3)
 		if held_object:
 			held_object.request_throw(-camera.global_transform.basis.z * THROW_SPEED)
 			held_object = null
