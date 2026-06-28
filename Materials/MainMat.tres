@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bfvvcxc2qfrdt" path="res://Textures/MainTexture_Emission.png" id="2_lmxoi"]
 
 [resource]
-blend_mode = 4
 albedo_texture = ExtResource("1_psxbc")
 emission_enabled = true
 emission_energy_multiplier = 3.14
