@@ -1,10 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://io5y0wm5a438"]
 
-[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="1_psxbc"]
-[ext_resource type="Texture2D" uid="uid://bfvvcxc2qfrdt" path="res://Textures/MainTexture_Emission.png" id="2_lmxoi"]
+[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="1_lmxoi"]
+[ext_resource type="Texture2D" uid="uid://bfvvcxc2qfrdt" path="res://Textures/MainTexture_Emission.png" id="2_ahsex"]
 
 [resource]
-albedo_texture = ExtResource("1_psxbc")
+albedo_texture = ExtResource("1_lmxoi")
 emission_enabled = true
 emission_energy_multiplier = 3.14
-emission_texture = ExtResource("2_lmxoi")
+emission_texture = ExtResource("2_ahsex")
