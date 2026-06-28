@@ -16,12 +16,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not multiplayer.is_server():
 		return
-	print("test this spawner")
+	#print("test this spawner")
 	timer += delta
 	label.text = str(spawnTime) + label_text
 	label2.text = str(spawnTime) + label_text
 	if timer >= spawnTime:
-		print("now we spawning")
+		#print("now we spawning")
 		spawn_a_box.rpc_id(1)
 		timer = 0.0
 
