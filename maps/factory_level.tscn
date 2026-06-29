@@ -71,6 +71,21 @@ spot_range = 15.0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 27.368418, 5.4623384, -12.811453)
 spot_range = 15.0
 
+[node name="SpotLight3D3" type="SpotLight3D" parent="Environment/Lights" unique_id=1774548629]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 62.149628, 8.024763, -12.811453)
+light_energy = 5.0
+spot_range = 15.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Environment/Lights" unique_id=602571195]
+transform = Transform3D(1, 0, 0, 0, 0.24812853, 0.9687271, 0, -0.9687271, 0.24812853, -1.3959556, 9.011511, -21.370958)
+light_energy = 3.0
+spot_range = 12.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Environment/Lights" unique_id=782740993]
+transform = Transform3D(1, 0, 0, 0, 0.24812853, 0.9687271, 0, -0.9687271, 0.24812853, 45.327885, 9.011511, -21.370958)
+light_energy = 3.0
+spot_range = 12.0
+
 [node name="Map" type="Node3D" parent="." unique_id=1522615066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.393055, -2, 0)
 
