@@ -6,5 +6,5 @@
 [resource]
 albedo_texture = ExtResource("1_lmxoi")
 emission_enabled = true
-emission_energy_multiplier = 3.14
+emission_energy_multiplier = 16.0
 emission_texture = ExtResource("2_ahsex")
