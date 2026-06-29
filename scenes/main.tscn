@@ -69,6 +69,21 @@ text = "JOIN"
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="LobbyUI/Margins/VBox" unique_id=869298796]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="LobbyUI/Margins/VBox/HBoxContainer2" unique_id=749974457]
+layout_mode = 2
+text = "Fullscreen Mode: "
+
+[node name="CheckButton" type="CheckButton" parent="LobbyUI/Margins/VBox/HBoxContainer2" unique_id=302492279]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="LobbyUI/Margins/VBox" unique_id=29029349]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/Margins/VBox" unique_id=1865025346]
 layout_mode = 2
 
@@ -165,4 +180,5 @@ texture = SubResource("GradientTexture2D_5usaj")
 
 [connection signal="pressed" from="LobbyUI/Margins/VBox/Button_Host" to="." method="_on_button_host_pressed"]
 [connection signal="pressed" from="LobbyUI/Margins/VBox/Button_Join" to="." method="_on_button_join_pressed"]
+[connection signal="toggled" from="LobbyUI/Margins/VBox/HBoxContainer2/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="text_changed" from="LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt" to="." method="_on_lobby_id_prompt_text_changed"]

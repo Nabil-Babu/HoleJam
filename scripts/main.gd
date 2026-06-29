@@ -241,3 +241,10 @@ func _on_lobby_id_prompt_text_changed(new_text: String) -> void:
 	button_join.disabled = (new_text.length() == 0)
 	button_host.disabled = (new_text.length() == 0)
 	join_code = new_text
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
