@@ -11,6 +11,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is RigidBody3D:
 		if body.has_signal("box_despawn"):
 			body.set_collision_mask_value(4, false)
+			print("BOX WENT IN")
 			if !body.box_despawn.is_connected(_update_score.bind(body.boxScore)):
 				body.box_despawn.connect(_update_score.bind(body.boxScore))
 	if body is CharacterBody3D && body.is_human:

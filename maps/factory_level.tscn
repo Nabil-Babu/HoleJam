@@ -57,13 +57,32 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.8
 [node name="Wall_Special" parent="Map/Walls" unique_id=558196076 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.722046e-06, 0, 80.68408)
 
+[node name="Wall" parent="Map/Walls/Wall_Special" index="0" unique_id=1568873836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0, 0)
+
+[node name="StaticBody3D" parent="Map/Walls/Wall_Special" index="2" unique_id=676238193]
+collision_layer = 8
+collision_mask = 8
+
 [node name="Wall_Special2" parent="Map/Walls" unique_id=698013217 instance=ExtResource("6_4c5kj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.4911375, 0, 80.675415)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.526291, 0, 80.68408)
+
+[node name="StaticBody3D" parent="Map/Walls/Wall_Special2" index="2" unique_id=676238193]
+collision_layer = 8
+collision_mask = 8
 
 [node name="Wall_Special3" parent="Map/Walls" unique_id=1534912906 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.526297, 0, 0)
 
+[node name="StaticBody3D" parent="Map/Walls/Wall_Special3" index="2" unique_id=676238193]
+collision_layer = 8
+collision_mask = 8
+
 [node name="Wall_Special4" parent="Map/Walls" unique_id=1211806398 instance=ExtResource("6_4c5kj")]
+
+[node name="StaticBody3D" parent="Map/Walls/Wall_Special4" index="2" unique_id=676238193]
+collision_layer = 8
+collision_mask = 8
 
 [node name="Wall21" parent="Map/Walls" unique_id=1593263 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.052595, 0, 1.9073486e-06)
@@ -685,12 +704,15 @@ transform = Transform3D(0.51351506, 0.4341906, -0.74012214, 0, 0.86253226, 0.506
 
 [node name="HoleArea" parent="." unique_id=924395208 instance=ExtResource("3_ay45a")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.158623, -0.87273014, -13.113611)
+team_name = "HUMANS"
 
 [node name="HoleAreaRobots" parent="." unique_id=1214320515 instance=ExtResource("13_wh3pw")]
 transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -1, -4.371139e-08, -4.371139e-08, 4.3711392e-08, -1, -4.371139e-08, 27.06, -0.427, 27.663498)
+team_name = "ROBOTS"
 
 [node name="HoleAreaRobots2" parent="." unique_id=458500677 instance=ExtResource("13_wh3pw")]
 transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, 1, -4.371139e-08, 4.3711385e-08, 4.3711385e-08, 1, 4.3711392e-08, 27.06, -0.427, -52.908733)
+team_name = "ROBOTS"
 
 [node name="Robots" type="Node3D" parent="." unique_id=1381818184]
 
@@ -719,3 +741,8 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10, 
 
 [node name="Station2" parent="Stations" unique_id=879142439 instance=ExtResource("13_sejmd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45, -1.5, -24)
+
+[editable path="Map/Walls/Wall_Special"]
+[editable path="Map/Walls/Wall_Special2"]
+[editable path="Map/Walls/Wall_Special3"]
+[editable path="Map/Walls/Wall_Special4"]
