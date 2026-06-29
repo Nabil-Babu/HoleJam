@@ -783,14 +783,29 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 
 [node name="Station2" parent="Stations" unique_id=879142439 instance=ExtResource("15_wg7g7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45, -1.5, -24)
 
-[node name="Railing" parent="." unique_id=661151316 instance=ExtResource("16_0y3ur")]
+[node name="Railings" type="Node3D" parent="." unique_id=1679313853]
 transform = Transform3D(2.4029653, 0, 0, 0, 1, 0, 0, 0, 1, 14.744209, 0.77449834, -53.08277)
 
-[node name="Railing2" parent="." unique_id=648738080 instance=ExtResource("16_0y3ur")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 14.867535, 0.77449834, -53.085308)
+[node name="Railing" parent="Railings" unique_id=661151316 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
-[node name="Railing3" parent="." unique_id=771013044 instance=ExtResource("16_0y3ur")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 39.25744, 0.77449834, -53.085308)
+[node name="Railing2" parent="Railings" unique_id=648738080 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(-1.8190603e-08, 0.41615248, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.05132246, 0, -0.0025367737)
+
+[node name="Railing3" parent="Railings" unique_id=771013044 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(-1.8190603e-08, 0.41615248, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 10.201241, 0, -0.0025367737)
+
+[node name="Railings2" type="Node3D" parent="." unique_id=1109934597]
+transform = Transform3D(-2.402965, 0, -8.742277e-08, 0, 0.99999994, 0, 2.1007388e-07, 0, -0.99999994, 39.251385, 0.77449834, 27.759563)
+
+[node name="Railing" parent="Railings2" unique_id=14868838 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(0.98742527, 0, 3.5527137e-15, 0, 0.9999997, 0, 0, 0, 0.9999997, 0.010700226, 0, 0)
+
+[node name="Railing2" parent="Railings2" unique_id=1367576145 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(-1.8190603e-08, 0.41615245, 0, -0.9999999, -4.371138e-08, 0, 0, 7.1054274e-15, 0.9999999, 0.07100868, 0, -0.0025367737)
+
+[node name="Railing3" parent="Railings2" unique_id=1625577748 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(-1.8190603e-08, 0.41615245, 0, -0.9999999, -4.371138e-08, 0, 0, 7.1054274e-15, 0.9999999, 10.125687, 0, -0.0025367737)
 
 [editable path="Map/Walls/Wall_Special"]
 [editable path="Map/Walls/Wall_Special2"]
