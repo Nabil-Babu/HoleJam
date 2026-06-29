@@ -185,7 +185,7 @@ func update_team_score(team: String, new_score: int) -> void:
 		if(game_scores[team] < 0): 
 			game_scores[team] = 0
 		update_team_ui(team)
-		receive_team_score(team, game_scores[team])
+		receive_team_score.rpc(team, game_scores[team])
 
 @rpc("any_peer", "call_local", "reliable")	
 func request_team_score(team: String) -> void:
