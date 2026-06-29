@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c5eghlshfv3o"]
+
+[ext_resource type="Texture2D" uid="uid://dvygjwv3jlqnk" path="res://Textures/Label_Square.png" id="1_0rw8a"]
+
+[node name="Decal_Label_Square" type="Decal" unique_id=893584902]
+transform = Transform3D(1, 0, 0, 0, 0.561, 0, 0, 0, 1.018, 0, 0, 0)
+texture_albedo = ExtResource("1_0rw8a")
+upper_fade = 0.0
+lower_fade = 0.0
