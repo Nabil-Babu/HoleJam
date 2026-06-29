@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dxhvpmi2y42th"]
+
+[ext_resource type="PackedScene" uid="uid://cipthsm26hbt" path="res://models/BoxShoot.fbx" id="1_0jjpd"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_tbfhn"]
+
+[node name="BoxShoot" unique_id=1442778299 instance=ExtResource("1_0jjpd")]
+
+[node name="BoxShoot" parent="." index="0" unique_id=2147258345]
+material_override = ExtResource("2_tbfhn")
