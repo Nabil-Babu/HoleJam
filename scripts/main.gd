@@ -7,7 +7,7 @@ signal game_started
 @export var game_score: int = 0
 
 @onready var lobby_ui: PanelContainer = $LobbyUI
-@onready var human_score_ui: Label3D = $"Score UI/HumanScoreUI"
+@onready var jelly_score_ui: Label3D = $"Score UI/JellyScoreUI"
 @onready var robot_score_ui: Label3D = $"Score UI/RobotScoreUI"
 @onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
 @onready var button_join: Button = $LobbyUI/Margins/VBox/Button_Join
@@ -25,7 +25,7 @@ var boxCount: int = 0
 var box_spawn_markers : Array[Node]
 var player_spawn_markers : Array[Node]
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
-var game_scores: Dictionary[String, int] = {"HUMANS": 0, "ROBOTS": 0}
+var game_scores: Dictionary[String, int] = {"JELLIES": 0, "ROBOTS": 0}
 
 func _ready() -> void: 
 	box_spawn_markers = box_container.get_children()
@@ -205,8 +205,8 @@ func receive_disable_lobby_ui_request():
 	lobby_ui.hide()
 
 func update_team_ui(team: String) -> void:
-	if team == "HUMANS":
-		human_score_ui.text = "Humans: " + str(game_scores["HUMANS"])
+	if team == "JELLIES":
+		jelly_score_ui.text = "Jellies: " + str(game_scores["JELLIES"])
 	if team == "ROBOTS":
 		robot_score_ui.text = "Robots: " + str(game_scores["ROBOTS"])
 

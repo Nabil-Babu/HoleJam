@@ -128,9 +128,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0627823, 0.8967309, -0.0193
 
 [node name="Score UI" type="Node3D" parent="." unique_id=1108934286]
 
-[node name="HumanScoreUI" type="Label3D" parent="Score UI" unique_id=1136365160]
+[node name="JellyScoreUI" type="Label3D" parent="Score UI" unique_id=1136365160]
 transform = Transform3D(-8.742278e-08, 0, -2.422, 0, 2, 0, 2, 0, -1.0586898e-07, 73.1632, 6.4768515, -21.085112)
-text = "Humans: 0"
+text = "Jellies: 0"
 font_size = 128
 
 [node name="RobotScoreUI" type="Label3D" parent="Score UI" unique_id=889441732]

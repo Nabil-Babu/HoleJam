@@ -761,7 +761,7 @@ transform = Transform3D(0.51351506, 0.49477446, -0.70107096, 3.7252903e-09, 0.81
 
 [node name="HoleArea" parent="." unique_id=924395208 instance=ExtResource("12_xwnmb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.158623, -0.87273014, -13.113611)
-team_name = "HUMANS"
+team_name = "JELLIES"
 
 [node name="HoleAreaRobots" parent="." unique_id=1214320515 instance=ExtResource("13_4bfir")]
 transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -1, -4.371139e-08, -4.371139e-08, 4.3711392e-08, -1, -4.371139e-08, 27.06, -0.427, 27.663498)
