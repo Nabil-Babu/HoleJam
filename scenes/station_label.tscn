@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b8rigbbk6s185" path="res://scripts/station_label.gd" id="1_bv0se"]
 [ext_resource type="Material" uid="uid://cw3w2rxysrrsl" path="res://addons/JehenoSimpleFirstPersonController/Map/Materials/floor_struture_material.tres" id="2_3ve3o"]
 [ext_resource type="PackedScene" uid="uid://dl2bcpr48occ0" path="res://scenes/Label_machine.tscn" id="2_bv0se"]
+[ext_resource type="PackedScene" uid="uid://bdgj287wwk3bk" path="res://scenes/Giant_light_green.tscn" id="2_gdxy6"]
+[ext_resource type="PackedScene" uid="uid://cfv7bhb4lgxf4" path="res://scenes/Giant_light_red.tscn" id="3_lncxt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3v62k"]
 
@@ -25,6 +27,12 @@ script = ExtResource("1_bv0se")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InputBoxArea" unique_id=888689206]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.05, 0.5, -0.05)
 shape = SubResource("BoxShape3D_3v62k")
+
+[node name="GiantLight_Green" parent="InputBoxArea" unique_id=246349914 instance=ExtResource("2_gdxy6")]
+transform = Transform3D(0.42728204, 0, 0, 0, 0.42728204, 0, 0, 0, 0.42728204, 0.23737097, 4.225102, -2.350913)
+
+[node name="GiantLight_Red" parent="InputBoxArea" unique_id=1374115569 instance=ExtResource("3_lncxt")]
+transform = Transform3D(0.48277754, 0, 0, 0, 0.48277754, 0, 0, 0, 0.48277754, 0.21752834, 4.2251015, -4.320614)
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1725448571]
 
