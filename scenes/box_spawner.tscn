@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://drvytprobuxpg"]
 
 [ext_resource type="Script" uid="uid://drkafrnfmamlk" path="res://scripts/box_spawner.gd" id="1_0bwl0"]
+[ext_resource type="PackedScene" uid="uid://b7rjyugl43a6e" path="res://scenes/Railing.tscn" id="2_itop5"]
 [ext_resource type="PackedScene" uid="uid://dxhvpmi2y42th" path="res://scenes/Box_shoot.tscn" id="3_tjhnl"]
 [ext_resource type="PackedScene" uid="uid://b04ak5rxuj4b0" path="res://scenes/Crazy_tube.tscn" id="5_gojcu"]
 
@@ -20,7 +21,7 @@ script = ExtResource("1_0bwl0")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.8, 0, 0, 0)
 
 [node name="Label3D" type="Label3D" parent="Visuals" unique_id=1882837353]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.6890464, 4.297093)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.6890464, 3.5722203)
 text = "Box Delivery"
 font_size = 72
 
@@ -39,8 +40,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61402273, 0)
 text = "1 Box per Second"
 font_size = 30
 
+[node name="Railing" parent="Visuals/Label3D" unique_id=661151316 instance=ExtResource("2_itop5")]
+transform = Transform3D(0.25047922, 0, 0, 0, 0.2319252, 0, -2.6316399e-15, 0, 0.19327101, -1.2924502, 0.31156138, 0)
+
+[node name="Railing2" parent="Visuals/Label3D" unique_id=242342255 instance=ExtResource("2_itop5")]
+transform = Transform3D(0.25047922, 0, 0, 0, 0.2319252, 0, -2.6316399e-15, 0, 0.19327101, -1.2862202, -1.0297596, 0)
+
+[node name="Railing3" parent="Visuals/Label3D" unique_id=597914651 instance=ExtResource("2_itop5")]
+transform = Transform3D(-5.829219e-09, -0.2319252, 0, 0.133357, -1.0137772e-08, 0, 7.842898e-23, 5.2632798e-15, 0.19327101, -1.28, -1.0297596, 0)
+
+[node name="Railing4" parent="Visuals/Label3D" unique_id=145440979 instance=ExtResource("2_itop5")]
+transform = Transform3D(-5.829218e-09, -0.2319252, 0, 0.133357, -1.0137772e-08, 0, 0, 5.2632798e-15, 0.19327101, 1.2448684, -1.0297596, -2.3841858e-07)
+
 [node name="Label3D2" type="Label3D" parent="Visuals" unique_id=2102536279]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649375e-07, 0, -1.5, 0, 0.49367332, -4.597493)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649377e-07, 0, -1.5, 0, 0.49367332, -3.8506732)
 text = "Box Delivery"
 font_size = 72
 
@@ -58,6 +71,18 @@ font_size = 34
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61402273, 0)
 text = "1 Box per Second"
 font_size = 30
+
+[node name="Railing5" parent="Visuals/Label3D2" unique_id=164867112 instance=ExtResource("2_itop5")]
+transform = Transform3D(-0.25047922, -3.0615214e-15, -2.9183111e-08, 0, -0.23192517, 1.6896287e-08, -3.7821305e-08, 2.0275547e-08, 0.19327101, 1.296274, -1.0425012, -0.02607441)
+
+[node name="Railing6" parent="Visuals/Label3D2" unique_id=597317170 instance=ExtResource("2_itop5")]
+transform = Transform3D(-0.25047922, -3.0615214e-15, -2.9183111e-08, 0, -0.23192517, 1.6896287e-08, -3.7821305e-08, 2.0275547e-08, 0.19327101, 1.3017994, 0.29881987, -0.02607441)
+
+[node name="Railing7" parent="Visuals/Label3D2" unique_id=218396245 instance=ExtResource("2_itop5")]
+transform = Transform3D(5.829215e-09, 0.23192517, -2.9183107e-08, -0.133357, 1.01377715e-08, 1.6896289e-08, 1.16584395e-08, 3.501973e-08, 0.19327098, 1.28, 0.29881987, -0.02607441)
+
+[node name="Railing8" parent="Visuals/Label3D2" unique_id=1369118673 instance=ExtResource("2_itop5")]
+transform = Transform3D(5.829215e-09, 0.23192517, -2.9183107e-08, -0.133357, 1.01377715e-08, 1.6896289e-08, 1.16584395e-08, 3.501973e-08, 0.19327098, -1.2448685, 0.29881987, -0.026075602)
 
 [node name="Art" type="Node3D" parent="." unique_id=585448284]
 transform = Transform3D(0.5218317, 0, 0, 0, 0.5218317, 0, 0, 0, 0.5218317, -0.014496326, 1.3248093, 6.8044033)
