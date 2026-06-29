@@ -109,22 +109,19 @@ spawn_path = NodePath("BoxContainer")
 spawn_limit = 40
 
 [node name="BoxContainer" type="Node3D" parent="MP_BoxSpawner" unique_id=451450987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58, 4.5602465, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.580566, 5.541344, -12.838064)
 
 [node name="BoxSpawn Pos" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=206978304]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5.520937, -1.2172918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9207935, 0.8967309, -1.1032572)
 
 [node name="BoxSpawn Pos2" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=637322854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.126211, 5.520937, -1.2172918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70895386, 1.5024076, 0.7358208)
 
 [node name="BoxSpawn Pos3" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=850515116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.10066, 5.520937, -1.2172918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5664291, 1.3827281, -1.0661087)
 
 [node name="BoxSpawn Pos4" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=1171010670]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.289738, 5.520937, -1.2172918)
-
-[node name="BoxSpawn Pos5" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=473968713]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.19884, 5.520937, -1.2172918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0627823, 0.8967309, -0.019324303)
 
 [node name="GameScoreUI" type="Label3D" parent="." unique_id=1136365160]
 transform = Transform3D(0.055844046, 0, -0.9984395, 0, 1, 0, 0.9984395, 0, 0.055844046, 66.30976, 1.4146442, -13.105645)
