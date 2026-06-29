@@ -10,6 +10,7 @@ signal box_despawn
 @export var YsizeRange: Vector2 = Vector2(1.0, 2.0)
 @export var ZsizeRange: Vector2 = Vector2(1.0, 2.0)
 
+
 var boxScore: int = 10
 var target_transform: Marker3D = null
 var is_following_target := false
@@ -24,6 +25,9 @@ func _ready() -> void:
 			scale.x = randf_range(XsizeRange.x, XsizeRange.y)
 			scale.y = randf_range(YsizeRange.x, YsizeRange.y)
 			scale.z = randf_range(ZsizeRange.x, ZsizeRange.y)
+		elif $Labels:
+			$Labels.scale.x = 1.0 / scale.x
+			$Labels.scale.z = 1.0 / scale.z
 
 
 func _process(_delta: float) -> void:
