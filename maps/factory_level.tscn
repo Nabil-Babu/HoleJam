@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://4fi2u80vj0s2" path="res://scenes/hole_area_robots.tscn" id="13_4bfir"]
 [ext_resource type="PackedScene" uid="uid://de7qhlmw8kp2s" path="res://scenes/robot.tscn" id="14_ttnlr"]
 [ext_resource type="PackedScene" uid="uid://dr3w6o44hmib8" path="res://scenes/station_label.tscn" id="15_wg7g7"]
+[ext_resource type="PackedScene" uid="uid://b7rjyugl43a6e" path="res://scenes/Railing.tscn" id="16_0y3ur"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,7 +87,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.8
 [node name="Wall_Special" parent="Map/Walls" unique_id=558196076 instance=ExtResource("2_2abrs")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.722046e-06, 0, 80.68408)
 
-[node name="Wall" parent="Map/Walls/Wall_Special" index="0" unique_id=1568873836]
+[node name="Wall" parent="Map/Walls/Wall_Special" index="0" unique_id=1961243509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0, 0)
 
 [node name="StaticBody3D" parent="Map/Walls/Wall_Special" index="2" unique_id=676238193]
@@ -781,6 +782,15 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 
 
 [node name="Station2" parent="Stations" unique_id=879142439 instance=ExtResource("15_wg7g7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 45, -1.5, -24)
+
+[node name="Railing" parent="." unique_id=661151316 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(2.4029653, 0, 0, 0, 1, 0, 0, 0, 1, 14.744209, 0.77449834, -53.08277)
+
+[node name="Railing2" parent="." unique_id=648738080 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 14.867535, 0.77449834, -53.085308)
+
+[node name="Railing3" parent="." unique_id=771013044 instance=ExtResource("16_0y3ur")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 39.25744, 0.77449834, -53.085308)
 
 [editable path="Map/Walls/Wall_Special"]
 [editable path="Map/Walls/Wall_Special2"]
