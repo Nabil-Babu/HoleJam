@@ -20,7 +20,7 @@ script = ExtResource("1_0bwl0")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.8, 0, 0, 0)
 
 [node name="Label3D" type="Label3D" parent="Visuals" unique_id=1882837353]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.6890464, 6.0153503)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.6890464, 4.297093)
 text = "Box Delivery"
 font_size = 72
 
@@ -40,7 +40,7 @@ text = "1 Box per Second"
 font_size = 30
 
 [node name="Label3D2" type="Label3D" parent="Visuals" unique_id=2102536279]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649374e-07, 0, -1.5, 0, 0.49367332, -6.2656336)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649375e-07, 0, -1.5, 0, 0.49367332, -4.597493)
 text = "Box Delivery"
 font_size = 72
 
@@ -63,16 +63,16 @@ font_size = 30
 transform = Transform3D(0.5218317, 0, 0, 0, 0.5218317, 0, 0, 0, 0.5218317, -0.014496326, 1.3248093, 6.8044033)
 
 [node name="CrazyTube3" parent="Art" unique_id=1883814074 instance=ExtResource("5_gojcu")]
-transform = Transform3D(-0.6433335, 0, -5.6241984e-08, 0, 0.6433335, 0, 5.6241984e-08, 0, -0.6433335, 35.70892, 21.455967, 0.1094017)
+transform = Transform3D(-0.6433335, 0, -5.6241976e-08, 0, 0.6433335, 0, 5.6241976e-08, 0, -0.6433335, 35.70892, 21.455967, -6.56828)
 
 [node name="CrazyTube4" parent="Art" unique_id=112641610 instance=ExtResource("5_gojcu")]
-transform = Transform3D(-0.6433335, 0, -5.6241976e-08, 0, 0.6433335, 0, 5.6241976e-08, 0, -0.6433335, 35.70892, 21.455967, -26.092976)
+transform = Transform3D(-0.6433335, 0, -5.624197e-08, 0, 0.6433335, 0, 5.624197e-08, 0, -0.6433335, 35.70892, 21.455967, -20.817238)
 
 [node name="CrazyTube5" parent="Art" unique_id=1374096415 instance=ExtResource("5_gojcu")]
-transform = Transform3D(0.6433335, 0, 7.158533e-08, 0, 0.6433335, 0, -7.158533e-08, 0, 0.6433335, -35.566715, 21.455967, -26.092976)
+transform = Transform3D(0.6433335, 0, 7.158533e-08, 0, 0.6433335, 0, -7.158533e-08, 0, 0.6433335, -35.566715, 21.455967, -20.817238)
 
 [node name="CrazyTube6" parent="Art" unique_id=1346621646 instance=ExtResource("5_gojcu")]
-transform = Transform3D(0.6433335, 0, 7.1585326e-08, 0, 0.6433335, 0, -7.1585326e-08, 0, 0.6433335, -35.566715, 21.455967, 0.10940266)
+transform = Transform3D(0.6433335, 0, 7.1585326e-08, 0, 0.6433335, 0, -7.1585326e-08, 0, 0.6433335, -35.566715, 21.455967, -6.56828)
 
 [node name="BoxShoot" parent="Art" unique_id=1442778299 instance=ExtResource("3_tjhnl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.268419, -13.533306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.60316455, 0, 7.268419, -13.533306)
