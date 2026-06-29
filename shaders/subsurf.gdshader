@@ -61,7 +61,7 @@ void fragment() {
 	
 	ALBEDO = final * vec3(1.0-mask) + texture(albedo_texture, uv).xyz * vec3(mask);
 	
-	EMISSION = ALBEDO * coat_amount;
+	EMISSION = ALBEDO * coat_amount * 0.3;
 	
 	SPECULAR = 1.0;
 	

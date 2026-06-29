@@ -16,5 +16,5 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=180585612]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.091625, 4.825989, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.091625, 4.825989, 0.20094872)
 shape = SubResource("BoxShape3D_n4yaj")

@@ -10,7 +10,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wmnrm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jemyy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_moq3g"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_moq3g")
@@ -52,6 +52,7 @@ properties/3/spawn = true
 properties/3/replication_mode = 1
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1395440502]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 3
 collision_mask = 13
 script = ExtResource("1_j5bdg")
@@ -76,7 +77,7 @@ bones/13/position = Vector3(0.5529207, -3.2423938e-12, -0.11233013)
 
 [node name="PlayerBlob" parent="PlayerMesh/PlayerBlob_V2/Skeleton3D" index="0" unique_id=420528647]
 material_override = null
-surface_material_override/0 = SubResource("ShaderMaterial_jemyy")
+surface_material_override/0 = SubResource("ShaderMaterial_moq3g")
 
 [node name="PlayerBlob" parent="PlayerMesh" unique_id=125532092 instance=ExtResource("2_f32li")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

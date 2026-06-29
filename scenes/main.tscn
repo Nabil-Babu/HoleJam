@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ng5vjc3hived" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://wmq8c5cvnn67" path="res://scenes/player_3D.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://bibc05t77kxfx" path="res://maps/factory_level.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://b7rjyugl43a6e" path="res://scenes/Railing.tscn" id="4_jyhfs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3v62k"]
 bg_color = Color(1, 1, 1, 0.24313726)
@@ -32,14 +33,16 @@ player_scene = ExtResource("2_sugp2")
 
 [node name="LobbyUI" type="PanelContainer" parent="." unique_id=2033165288]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -175.0
-offset_right = 300.0
-offset_bottom = -50.0
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_right = -100.0
+offset_bottom = 145.0
+grow_horizontal = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3v62k")
 
 [node name="Margins" type="MarginContainer" parent="LobbyUI" unique_id=344717145]
@@ -84,6 +87,7 @@ select_all_on_focus = true
 caret_blink = true
 
 [node name="TemplateMap" parent="." unique_id=507080638 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021591187, 0.0388484, 0.0053138733)
 
 [node name="MP_PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1924961463]
 _spawnable_scenes = PackedStringArray("uid://wmq8c5cvnn67")
@@ -123,23 +127,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5664291, 1.3827281, -1.0661
 [node name="BoxSpawn Pos4" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=1171010670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0627823, 0.8967309, -0.019324303)
 
-[node name="HumanScoreUI" type="Label3D" parent="." unique_id=1136365160]
-transform = Transform3D(-4.371139e-08, 0, -1.2107949, 0, 1, 0, 1, 0, -5.292553e-08, 73.1632, 6.227977, -16.817688)
+[node name="Score UI" type="Node3D" parent="." unique_id=1108934286]
+
+[node name="HumanScoreUI" type="Label3D" parent="Score UI" unique_id=1136365160]
+transform = Transform3D(-8.742278e-08, 0, -2.422, 0, 2, 0, 2, 0, -1.0586898e-07, 73.1632, 6.4768515, -21.085112)
 text = "Humans: 0"
 font_size = 128
 
-[node name="Sprite3D" type="Sprite3D" parent="HumanScoreUI" unique_id=1942545227]
-transform = Transform3D(11.034578, 0, 0, 0, 5.835121, 0, -2.842171e-14, 0, 1.9999999, 1.53514, 0, 0)
-render_priority = -2
-texture = SubResource("GradientTexture2D_5usaj")
-
-[node name="RobotScoreUI" type="Label3D" parent="." unique_id=889441732]
-transform = Transform3D(-4.371139e-08, 0, -1.2107949, 0, 1, 0, 1, 0, -5.292553e-08, 73.1632, 6.227977, -9.806297)
+[node name="RobotScoreUI" type="Label3D" parent="Score UI" unique_id=889441732]
+transform = Transform3D(-8.742278e-08, 0, -2.422, 0, 2, 0, 2, 0, -1.0586898e-07, 73.1632, 6.540452, -6.68851)
 text = "Robots: 0"
 font_size = 128
 
-[node name="Sprite3D" type="Sprite3D" parent="RobotScoreUI" unique_id=1166302184]
-transform = Transform3D(11.034578, 0, 0, 0, 5.835121, 0, -2.842171e-14, 0, 1.9999999, 1.6303225, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="Score UI" unique_id=1166302184]
+transform = Transform3D(-9.646734e-07, 0, -4.8439994, 0, 11.670242, 0, 22.069157, 0, -2.1173794e-07, 73.1632, 6.227977, -6.5456524)
+render_priority = -2
+texture = SubResource("GradientTexture2D_5usaj")
+
+[node name="Railing" parent="Score UI" unique_id=661151316 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(-1.2177988e-07, 0, -1.24733, 0, 1.236, 0, 2.786, 0, -5.4522506e-08, 73.1632, 10.035198, -27.834755)
+
+[node name="Railing2" parent="Score UI" unique_id=1309928683 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(-1.2134275e-07, 0, -1.24733, 0, 1.236, 0, 2.776, 0, -5.4522506e-08, 73.1632, 2.882063, -27.801533)
+
+[node name="Railing3" parent="Score UI" unique_id=304786469 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1.3588404e-15, 5.406371e-08, -1.2481723, 0.71118, -5.4063754e-08, 0, -3.1086657e-08, -1.2368346, -5.4559344e-08, 73.1632, 2.8193564, -27.62444)
+
+[node name="Railing5" parent="Score UI" unique_id=561771646 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1.3588404e-15, 5.406371e-08, -1.2481723, 0.71118, -5.4063754e-08, 0, -3.1086657e-08, -1.2368346, -5.4559344e-08, 73.1632, 2.7321506, -13.639868)
+
+[node name="Railing6" parent="Score UI" unique_id=430420612 instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1.3588404e-15, 5.406371e-08, -1.2481723, 0.71118, -5.4063754e-08, 0, -3.1086657e-08, -1.2368346, -5.4559344e-08, 73.1632, 2.7321506, 0.5879822)
+
+[node name="Sprite3D2" type="Sprite3D" parent="Score UI" unique_id=1942545227]
+transform = Transform3D(-9.646734e-07, 0, -4.8439994, 0, 11.670242, 0, 22.069157, 0, -2.1173794e-07, 73.1632, 6.227977, -20.747408)
 render_priority = -2
 texture = SubResource("GradientTexture2D_5usaj")
 

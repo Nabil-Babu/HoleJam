@@ -1,13 +1,14 @@
 extends Control
 
 const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
+signal game_started
 
 @export var player_scene : PackedScene
 @export var game_score: int = 0
 
 @onready var lobby_ui: PanelContainer = $LobbyUI
-@onready var human_score_ui: Label3D = $HumanScoreUI
-@onready var robot_score_ui: Label3D = $RobotScoreUI
+@onready var human_score_ui: Label3D = $"Score UI/HumanScoreUI"
+@onready var robot_score_ui: Label3D = $"Score UI/RobotScoreUI"
 @onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
 @onready var button_join: Button = $LobbyUI/Margins/VBox/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt
@@ -82,6 +83,7 @@ func _lobby_created(result : int, lobby_id : int):
 		multiplayer.peer_connected.connect(add_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 		add_player() # adding host as player, default id = 1
+		game_started.emit()
 
 
 func _check_lobby_list(lobbies : Array) -> void:
