@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cm87ayc1pfftb"]
+
+[ext_resource type="Texture2D" uid="uid://ckgb1yq4kcfv8" path="res://Textures/MainTexture.png" id="1_54exj"]
+[ext_resource type="Texture2D" uid="uid://48a1w88qgb2d" path="res://Textures/GiantLights_Emissive.png" id="2_54exj"]
+
+[resource]
+albedo_texture = ExtResource("1_54exj")
+emission_enabled = true
+emission_energy_multiplier = 3.14
+emission_texture = ExtResource("2_54exj")

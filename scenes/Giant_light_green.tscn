@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bdgj287wwk3bk"]
+
+[ext_resource type="PackedScene" uid="uid://6xdi03w45fdo" path="res://models/GiantLight_Green.fbx" id="1_0kypj"]
+[ext_resource type="Material" uid="uid://cm87ayc1pfftb" path="res://Materials/MAT_GiantLights.tres" id="2_m0x8d"]
+
+[node name="GiantLight_Green" unique_id=246349914 instance=ExtResource("1_0kypj")]
+
+[node name="GiantLight_Green" parent="LabelMachine" parent_id_path=PackedInt32Array(887891616) index="0" unique_id=583123958]
+material_override = ExtResource("2_m0x8d")

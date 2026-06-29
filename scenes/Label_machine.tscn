@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dl2bcpr48occ0"]
+
+[ext_resource type="PackedScene" uid="uid://ckh6a2e6q086q" path="res://models/LabelMachine.fbx" id="1_fp00b"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_mbiws"]
+
+[node name="LabelMachine" unique_id=1501650996 instance=ExtResource("1_fp00b")]
+
+[node name="LabelMachine2" parent="LabelMachine" parent_id_path=PackedInt32Array(1621882263) index="0" unique_id=216115467]
+material_override = ExtResource("2_mbiws")

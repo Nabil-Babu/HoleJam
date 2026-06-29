@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b7rjyugl43a6e"]
+
+[ext_resource type="PackedScene" uid="uid://idrd502fodxi" path="res://models/Railing.fbx" id="1_vfvtr"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_kbjdr"]
+
+[node name="Railing" unique_id=661151316 instance=ExtResource("1_vfvtr")]
+
+[node name="Railing" parent="." index="0" unique_id=1729975382]
+material_override = ExtResource("2_kbjdr")
