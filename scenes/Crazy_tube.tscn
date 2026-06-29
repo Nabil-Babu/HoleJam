@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b04ak5rxuj4b0"]
+
+[ext_resource type="PackedScene" uid="uid://tpdygealaptb" path="res://models/CrazyTube.fbx" id="1_wvpyx"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_312xj"]
+
+[node name="CrazyTube" unique_id=112641610 instance=ExtResource("1_wvpyx")]
+
+[node name="CrazyTube" parent="." index="0" unique_id=245276502]
+material_override = ExtResource("2_312xj")

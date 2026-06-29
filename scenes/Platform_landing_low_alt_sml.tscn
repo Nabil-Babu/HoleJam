@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cf2424wu0ehqx"]
+
+[ext_resource type="PackedScene" uid="uid://ccfvrmspxdbco" path="res://models/Platform_LandingLow_Alt_Sml.fbx" id="1_rdd1q"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_rq2ra"]
+
+[node name="Platform_LandingLow_Alt_Sml" unique_id=2129868894 instance=ExtResource("1_rdd1q")]
+
+[node name="Platform_LandingLow_Alt_Sml" parent="." index="0" unique_id=821446509]
+material_override = ExtResource("2_rq2ra")

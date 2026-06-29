@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://j7an7plkune8"]
+
+[ext_resource type="PackedScene" uid="uid://2pb15vv1n7l1" path="res://models/Platform_Angled_Top_Sml.fbx" id="1_i3iuf"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_t7x7t"]
+
+[node name="Platform_Angled_Top_Sml" unique_id=389405584 instance=ExtResource("1_i3iuf")]
+
+[node name="Platform_Angled_Top_Sml" parent="." index="0" unique_id=1341897686]
+material_override = ExtResource("2_t7x7t")

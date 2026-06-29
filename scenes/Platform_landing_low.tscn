@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dykrlfwhrnks6"]
+
+[ext_resource type="PackedScene" uid="uid://edg8bdcqrnuo" path="res://models/Platform_LandingLow.fbx" id="1_mp208"]
+[ext_resource type="Material" uid="uid://io5y0wm5a438" path="res://Materials/MainMat.tres" id="2_hu8tn"]
+
+[node name="Platform_LandingLow" unique_id=744928882 instance=ExtResource("1_mp208")]
+
+[node name="Platform_LandingLow" parent="." index="0" unique_id=472458155]
+material_override = ExtResource("2_hu8tn")
