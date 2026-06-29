@@ -9,6 +9,8 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var col_shape: CollisionShape3D = $CollisionShape3D
 @onready var animation_player: AnimationPlayer = $RobotMesh/iBoxIt/AnimationPlayer
 
+var is_human := false
+
 func request_shove(force: Vector3):
 	force *= 40.0
 	force.y += 2.5

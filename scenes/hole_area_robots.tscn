@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://4fi2u80vj0s2"]
+
+[ext_resource type="Script" uid="uid://bdluqrvosmreg" path="res://scripts/hole_area.gd" id="1_5nams"]
+[ext_resource type="Shader" uid="uid://bu12ck2mvw72" path="res://shaders/black_hole.gdshader" id="2_dqmem"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0y3ur"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbscq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbscq"]
+render_priority = 0
+shader = ExtResource("2_dqmem")
+shader_parameter/hole_depth = 0.10000000149012
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5nams"]
+
+[node name="HoleAreaRobots" type="Area3D" unique_id=924395208]
+collision_mask = 2
+script = ExtResource("1_5nams")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1927764764]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, -1)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1178998825]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, 1)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=340758649]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, 3)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=637909546]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, -3)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=2092794113]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, -5)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=1036605916]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, -7)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." unique_id=727093661]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, -9)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="." unique_id=298121055]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, 5)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="." unique_id=131521232]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, 7)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="." unique_id=1274291057]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, 9)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="." unique_id=1668465786]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, 11)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="." unique_id=187802010]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.75, -11)
+shape = SubResource("BoxShape3D_0y3ur")
+
+[node name="HoleMesh" type="MeshInstance3D" parent="." unique_id=1213561387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 12, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_nbscq")
+material_overlay = SubResource("ShaderMaterial_nbscq")
+mesh = SubResource("PlaneMesh_5nams")

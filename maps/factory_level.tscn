@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c6or8o8mfqdj7" path="res://scenes/Platform_corner.tscn" id="12_ft6i4"]
 [ext_resource type="PackedScene" uid="uid://i5gns5qsub7e" path="res://scenes/Fencing.tscn" id="13_ft6i4"]
 [ext_resource type="PackedScene" uid="uid://dr3w6o44hmib8" path="res://scenes/station_label.tscn" id="13_sejmd"]
+[ext_resource type="PackedScene" uid="uid://4fi2u80vj0s2" path="res://scenes/hole_area_robots.tscn" id="13_wh3pw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -53,10 +54,16 @@ material = ExtResource("2_8qy4v")
 [node name="Walls" type="Node3D" parent="Map" unique_id=232159798]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.894802, -0.49999905, 27.684084)
 
-[node name="Wall19" parent="Map/Walls" unique_id=1211806398 instance=ExtResource("6_4c5kj")]
+[node name="Wall_Special" parent="Map/Walls" unique_id=558196076 instance=ExtResource("6_4c5kj")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.722046e-06, 0, 80.68408)
 
-[node name="Wall20" parent="Map/Walls" unique_id=1534912906 instance=ExtResource("6_4c5kj")]
+[node name="Wall_Special2" parent="Map/Walls" unique_id=698013217 instance=ExtResource("6_4c5kj")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.4911375, 0, 80.675415)
+
+[node name="Wall_Special3" parent="Map/Walls" unique_id=1534912906 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.526297, 0, 0)
+
+[node name="Wall_Special4" parent="Map/Walls" unique_id=1211806398 instance=ExtResource("6_4c5kj")]
 
 [node name="Wall21" parent="Map/Walls" unique_id=1593263 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.052595, 0, 1.9073486e-06)
@@ -99,12 +106,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -23.
 
 [node name="Wall3" parent="Map/Walls" unique_id=1421452365 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -11.526304, 0, 80.68408)
-
-[node name="Wall4" parent="Map/Walls" unique_id=558196076 instance=ExtResource("6_4c5kj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.722046e-06, 0, 80.68408)
-
-[node name="Wall5" parent="Map/Walls" unique_id=698013217 instance=ExtResource("6_4c5kj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.526292, 0, 80.68408)
 
 [node name="Wall6" parent="Map/Walls" unique_id=710513890 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 23.05259, 0, 80.68408)
@@ -684,6 +685,12 @@ transform = Transform3D(0.51351506, 0.4341906, -0.74012214, 0, 0.86253226, 0.506
 
 [node name="HoleArea" parent="." unique_id=924395208 instance=ExtResource("3_ay45a")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.158623, -0.87273014, -13.113611)
+
+[node name="HoleAreaRobots" parent="." unique_id=1214320515 instance=ExtResource("13_wh3pw")]
+transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -1, -4.371139e-08, -4.371139e-08, 4.3711392e-08, -1, -4.371139e-08, 27.06, -0.427, 27.663498)
+
+[node name="HoleAreaRobots2" parent="." unique_id=458500677 instance=ExtResource("13_wh3pw")]
+transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, 1, -4.371139e-08, 4.3711385e-08, 4.3711385e-08, 1, 4.3711392e-08, 27.06, -0.427, -52.908733)
 
 [node name="Robots" type="Node3D" parent="." unique_id=1381818184]
 
