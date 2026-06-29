@@ -14,6 +14,7 @@ const JOYPAD_SENSITIVITY: float = 1.000
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var held_object = null
 var is_reticle_active: bool = false
+var is_human: bool = true
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
