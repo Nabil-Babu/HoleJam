@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b3x5fbnt43jdr"]
+
+[ext_resource type="Texture2D" uid="uid://by034pe2lss56" path="res://Textures/Label_Sml.png" id="1_3yg50"]
+
+[node name="Decal_Label_Small" type="Decal" unique_id=1576791621]
+transform = Transform3D(1.1125816, 0, 0, 0, 1, 0, 0, 0, 0.75939006, 0, 0, 0)
+size = Vector3(1.275, 2, 1.265)
+texture_albedo = ExtResource("1_3yg50")
+upper_fade = 0.0
+lower_fade = 0.0
