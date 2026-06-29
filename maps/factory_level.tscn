@@ -57,7 +57,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.8
 [node name="Wall_Special" parent="Map/Walls" unique_id=558196076 instance=ExtResource("6_4c5kj")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.722046e-06, 0, 80.68408)
 
-[node name="Wall" parent="Map/Walls/Wall_Special" index="0" unique_id=1568873836]
+[node name="Wall" parent="Map/Walls/Wall_Special" index="0" unique_id=1982198534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5258789e-05, 0, 0)
 
 [node name="StaticBody3D" parent="Map/Walls/Wall_Special" index="2" unique_id=676238193]

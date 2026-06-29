@@ -6,7 +6,8 @@ const STEAM_APP_ID : int = 480 # 480 is dev app test ID... NEED TO REPLACE
 @export var game_score: int = 0
 
 @onready var lobby_ui: PanelContainer = $LobbyUI
-@onready var game_score_ui: Label3D = $GameScoreUI
+@onready var human_score_ui: Label3D = $HumanScoreUI
+@onready var robot_score_ui: Label3D = $RobotScoreUI
 @onready var button_host: Button = $LobbyUI/Margins/VBox/Button_Host
 @onready var button_join: Button = $LobbyUI/Margins/VBox/Button_Join
 @onready var lobby_id_prompt: LineEdit = $LobbyUI/Margins/VBox/HBoxContainer/Lobby_ID_Prompt
@@ -23,7 +24,7 @@ var boxCount: int = 0
 var box_spawn_markers : Array[Node]
 var player_spawn_markers : Array[Node]
 var box_scene: PackedScene = preload("res://scenes/box.tscn")
-var game_scores: Dictionary[String, int] 
+var game_scores: Dictionary[String, int] = {"HUMANS": 0, "ROBOTS": 0}
 
 func _ready() -> void: 
 	box_spawn_markers = box_container.get_children()
@@ -103,7 +104,8 @@ func add_player(id : int = 1):
 	player.name = str(id)
 	player_container.call_deferred("add_child", player, true)
 	if multiplayer.is_server() && id != 1:
-		broadcast_updated_score.rpc_id(id,game_score)
+		for team: String in game_scores.keys():
+			receive_team_score.rpc_id(id, team, game_scores[team])
 	print("Player joined with ID: " + str(id))
 	
 	if player_spawn_markers.size() > 0:
@@ -173,14 +175,7 @@ func receive_message_from_server(message: String):
 	# This code executes on the client machine
 	print("Received from server: ", message)
 
-@rpc("any_peer", "call_local", "reliable")
-func update_game_score(new_score: int):
-	if multiplayer.is_server():
-		game_score += new_score
-		print("Server Score: %d" % game_score)
-		broadcast_updated_score.rpc(game_score)
-		game_score_ui.text = "Score: "+str(game_score)
-		
+
 @rpc("any_peer", "call_local", "reliable")
 func update_team_score(team: String, new_score: int) -> void:
 	if !multiplayer.is_server():
@@ -189,6 +184,8 @@ func update_team_score(team: String, new_score: int) -> void:
 		game_scores[team]+=new_score
 		if(game_scores[team] < 0): 
 			game_scores[team] = 0
+		update_team_ui(team)
+		receive_team_score(team, game_scores[team])
 
 @rpc("any_peer", "call_local", "reliable")	
 func request_team_score(team: String) -> void:
@@ -199,17 +196,17 @@ func request_team_score(team: String) -> void:
 @rpc("authority", "call_remote", "reliable")
 func receive_team_score(team: String, score: int):
 	game_scores[team] = score;
-
-@rpc("authority", "call_remote", "reliable")
-func broadcast_updated_score(score: int):
-	game_score = score
-	print("Broadcasted Score: %d" % game_score)
-	game_score_ui.text = "Score: "+str(game_score)
+	update_team_ui(team)
 	
 @rpc("authority", "call_local", "reliable")
 func receive_disable_lobby_ui_request():
 	lobby_ui.hide()
 
+func update_team_ui(team: String) -> void:
+	if team == "HUMANS":
+		human_score_ui.text = "Humans: " + str(game_scores["HUMANS"])
+	if team == "ROBOTS":
+		robot_score_ui.text = "Robots: " + str(game_scores["ROBOTS"])
 
 func send_data_to_single_client(client_id: int, text_to_send: String):
 	# The first argument is the destination peer ID.

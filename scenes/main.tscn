@@ -123,15 +123,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5664291, 1.3827281, -1.0661
 [node name="BoxSpawn Pos4" type="Marker3D" parent="MP_BoxSpawner/BoxContainer" unique_id=1171010670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0627823, 0.8967309, -0.019324303)
 
-[node name="GameScoreUI" type="Label3D" parent="." unique_id=1136365160]
-transform = Transform3D(0.055844046, 0, -0.9984395, 0, 1, 0, 0.9984395, 0, 0.055844046, 66.30976, 1.4146442, -13.105645)
-billboard = 1
-text = "Score: 0"
+[node name="HumanScoreUI" type="Label3D" parent="." unique_id=1136365160]
+transform = Transform3D(-4.371139e-08, 0, -1.2107949, 0, 1, 0, 1, 0, -5.292553e-08, 73.1632, 6.227977, -16.817688)
+text = "Humans: 0"
 font_size = 128
 
-[node name="Sprite3D" type="Sprite3D" parent="GameScoreUI" unique_id=1942545227]
-transform = Transform3D(6, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0)
-billboard = 1
+[node name="Sprite3D" type="Sprite3D" parent="HumanScoreUI" unique_id=1942545227]
+transform = Transform3D(11.034578, 0, 0, 0, 5.835121, 0, -2.842171e-14, 0, 1.9999999, 1.53514, 0, 0)
+render_priority = -2
+texture = SubResource("GradientTexture2D_5usaj")
+
+[node name="RobotScoreUI" type="Label3D" parent="." unique_id=889441732]
+transform = Transform3D(-4.371139e-08, 0, -1.2107949, 0, 1, 0, 1, 0, -5.292553e-08, 73.1632, 6.227977, -9.806297)
+text = "Robots: 0"
+font_size = 128
+
+[node name="Sprite3D" type="Sprite3D" parent="RobotScoreUI" unique_id=1166302184]
+transform = Transform3D(11.034578, 0, 0, 0, 5.835121, 0, -2.842171e-14, 0, 1.9999999, 1.6303225, 0, 0)
 render_priority = -2
 texture = SubResource("GradientTexture2D_5usaj")
 
